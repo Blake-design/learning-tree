@@ -11,7 +11,7 @@ const path = require("path");
 const { typeDefs, resolvers } = require("./schemas");
 
 //// authMiddleware  attaches to the ApolloServer allowing us to use authentication
-const { authMiddleware } = require("/utils/auth");
+const { authMiddleware } = require("./utils/auth");
 
 /// db constant holds the database configuration
 const db = require("./config/connection");
@@ -23,16 +23,15 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 /// this will start creating the server
-async function startApolloServer() {
-  const server = ApolloServer({
-    typeDefs, //// typeDefs define the graphQl queries
-    resolvers, //// resolvers define the methods called upon the server
-    context: authMiddleware, ////// add context to the server so authMiddleware can pass data to resolvers
-  });
-}
+
+const server = new ApolloServer({
+  typeDefs, //// typeDefs define the graphQl queries
+  resolvers, //// resolvers define the methods called upon the server
+  context: authMiddleware, ////// add context to the server so authMiddleware can pass data to resolvers
+});
 
 /// once built then start the server
-await server.start();
+server.start();
 
 //// now apply middleware to express app
 server.applyMiddleware({ app });
