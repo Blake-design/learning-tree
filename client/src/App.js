@@ -11,6 +11,16 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
+///Import components
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+///Import pages
+import Home from "./pages/Home";
+import User from "./pages/User";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+
 //// set graphlQl link
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -36,9 +46,31 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">The Learning Tree</header>
-    </div>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+          <div className="container">
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+            <Route exact path="/me">
+              <User />
+            </Route>
+            <Route exact path="/users/:userId">
+              <User />
+            </Route>
+          </div>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
