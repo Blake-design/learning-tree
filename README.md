@@ -2,6 +2,10 @@ The MIT License
 License: MIT
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Skip To
+
+
+
 # The Learning Tree
 
 ## What is The Learning Tree?
@@ -9,6 +13,47 @@ License: MIT
 Knowledge is a never ending quest. From the first seeding of education your journey will branch out in every direction.
 
 The Learning Tree is a progressive web application that maps your exploration. You can this use map to find your way when your become lost, refreshing old concepts and quizing yourself on what you have learned.
+
+
+## How to use The Learning Tree
+
+Welcome to your start of your journey!
+The first time a User logs in they will be prompted to answer the folowing questions
+
+** What area of focus are we learning? **
+
+  User responds with any single area of focus that applies to them 
+ ----- insert gif --  (user responds web development)
+
+
+** What topics of (usersAnswer) have you studied? **
+   User responds with any topics that applies to them 
+  ----- insert gif --  (Html, CSS, JS)
+
+** Do you have any specialized categories? **
+user responds  no
+
+
+Great! we have started your knowledge map. please click any topic to make an entry.
+
+-- insert photo --
+
+user clicks JS and modal opens 
+
+-- insert gif --
+
+The modal with have the title and description of the node clicked.
+Below that is a form with the following entries:
+
+Focus (prefilled can be changed)
+Topic  (prefilled can be changed)
+category (prefilled can be changed- if completed)
+(entry) title
+(entry) description
+
+when the user hits submit it will create a new branch on the dendrogram depending on input. 
+
+
 
 ## How was it Built?
 
