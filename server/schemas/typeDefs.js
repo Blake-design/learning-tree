@@ -10,9 +10,8 @@ const typeDefs = gql`
     focuses: [Focus]
     sparks: [Spark]
     friends: [User]
-  }
-
-  type Focus{
+    
+  type Focus {
     _id: ID
     title: String!
     description: String
@@ -44,23 +43,18 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addFocus(
-      _id: ID
-      title: String!
-      description:String!
-    )
-    addSpark(
-      _id: ID
-      title: String!
-      description:String!
-    )
+
+    addFocus(_id: ID, title: String!, description: String!): Auth
+
+    addSpark(_id: ID, title: String!, description: String!): Auth
+
     addFriend(
-    _id: ID
-    firstname: String!
-    lastname: String!
-    username: String!
-    email: String!
-    )
+      _id: ID
+      firstname: String!
+      lastname: String!
+      username: String!
+      email: String!
+    ): Auth
     login(email: String!, password: String!): Auth
     removeUser: User
   }
