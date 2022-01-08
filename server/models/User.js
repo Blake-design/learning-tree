@@ -29,10 +29,16 @@ const UserSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  foci: [
+  focuses: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Focus',
+    },
+  ],
+  friends: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
     },
   ],
 });
