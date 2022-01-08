@@ -19,7 +19,7 @@ const FocusForm = ({ userId }) => {
         variables: { userId, focus },
       });
 
-      setSpark("");
+      setFocus("");
     } catch (err) {
       console.error(err);
     }
@@ -37,9 +37,9 @@ const FocusForm = ({ userId }) => {
           <div className="col-12 col-lg-9">
             <input
               placeholder="Endorse some sparks..."
-              value={spark}
+              value={focus}
               className="form-input w-100"
-              onChange={(event) => setfocus(event.target.value)}
+              onChange={(event) => setFocus(event.target.value)}
             />
           </div>
 
