@@ -19,11 +19,13 @@ const typeDefs = gql`
     _id; ID
     title:String!
     description:String
+     sparks:[spark]
   }
   type Spark {
     _id:ID
     title:String!
     description:String!
+     sparks:[spark]
   }
   type Query {
     users: [User]!
@@ -37,6 +39,23 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
+    addFocus(
+      _id: ID
+      title: String!
+      description:String!
+    )
+    addSpark(
+      _id: ID
+      title: String!
+      description:String!
+    )
+    addFriend(
+    _id: ID
+    firstname: String!
+    lastname: String!
+    username: String!
+    email: String!
+    )
     login(email: String!, password: String!): Auth
     removeUser: User
   }

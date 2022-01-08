@@ -1,11 +1,11 @@
 import React from "react";
 import { useMutation } from "@apollo/client";
 
-import { REMOVE_SKILL } from "../../utils/mutations";
+import { REMOVE_SPARK } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
 
 const SparkList = ({ sparks, isLoggedInUser = false }) => {
-  const [removeSpark, { error }] = useMutation(REMOVE_Spark, {
+  const [removeSpark, { error }] = useMutation(REMOVE_SPARK, {
     update(cache, { data: { removeSpark } }) {
       try {
         cache.writeQuery({
@@ -18,7 +18,7 @@ const SparkList = ({ sparks, isLoggedInUser = false }) => {
     },
   });
 
-  const handleRemoveSkill = async (skill) => {
+  const handleRemoveSpark = async (spark) => {
     try {
       const { data } = await removeSpark({
         variables: { spark },
@@ -61,4 +61,4 @@ const SparkList = ({ sparks, isLoggedInUser = false }) => {
   );
 };
 
-export default SparksList;
+export default SparkList;

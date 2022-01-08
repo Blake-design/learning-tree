@@ -3,7 +3,7 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import SkillsList from "../components/SkillsList";
+import SparkList from "../components/SparkList";
 import FocusForm from "../components/FocusForm";
 
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
@@ -43,11 +43,11 @@ const User = () => {
     <div>
       <h2 className="card-header">
         {userId ? `${user.name}'s` : "Your"} friends have endorsed these
-        skills...
+        sparks...
       </h2>
 
-      {user.skills?.length > 0 && (
-        <SkillsList skills={user.skills} isLoggedInUser={!userId && true} />
+      {user.sparks?.length > 0 && (
+        <SparkList sparks={user.sparks} isLoggedInUser={!userId && true} />
       )}
 
       <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>

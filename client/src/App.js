@@ -8,7 +8,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 ///Import components
@@ -51,21 +51,17 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/me">
-              <User />
-            </Route>
-            <Route exact path="/users/:userId">
-              <User />
-            </Route>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+
+              <Route exact path="/login" element={<Login />} />
+
+              <Route exact path="/signup" element={<Signup />} />
+
+              <Route exact path="/me" element={<User />} />
+
+              <Route exact path=":userId" element={<User />} />
+            </Routes>
           </div>
           <Footer />
         </div>
