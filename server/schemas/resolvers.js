@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Focus, Spark } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -46,12 +46,40 @@ const resolvers = {
       return { token, user };
     },
 
-    removeUser: async (parent, args, { context }) => {
-      if (context.user) {
-        return User.findOneAndDelete({ _id: context.user._id });
-      }
-      throw new AuthenticationError("Please log in");
+    addFocus: async (parent, { title, createdBy }) => {
+      const focus = await Focus.create( { title, createdBy });
+
+      await User.findOneAndUpdate(
+        { username: createdBy },
+        { $addToSet: { foci: focus._id }}
+      );
+
+      return focus;
     },
+
+    addSpark: async (parent, { focusId, title, description }) => {
+      return Focus.findOneAndUpdate(
+        { _id: focusId },
+        { $addToSet: { sparks: { title, description } }},
+        {
+          new: true,
+          runValidators: true
+        }
+      )
+    },
+
+    removeFocus: async (parent, { focusId }) => {
+      return Focus.findOneAndDelete({ _id: focusId })
+    },
+
+    removeSpark: async (parent, { focusId, sparkId }) => {
+      return Focus.findOneAndUpdate(
+        { id: focusId },
+        { $pull: { sparks: { _id: sparkId } }},
+        { new: true }
+      )
+    }
+
   },
 };
 

@@ -2,12 +2,12 @@ const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
-  firstname: {
+  firstName: {
     type: String,
     required: true,
     trim: true,
   },
-  lastname: {
+  lastName: {
     type: String,
     required: true,
     trim: true,
@@ -29,6 +29,12 @@ const UserSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  foci: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Focus',
+    },
+  ],
 });
 
 // set up pre-save middleware to create password
