@@ -7,31 +7,36 @@ const typeDefs = gql`
     lastname: String!
     username: String!
     email: String!
-    focuses:[focus]
-    sparks:[spark]
-    friends:[user]
+    focuses: [Focus]
+    sparks: [Spark]
+    friends: [User]
   }
+
+  type Focus{
+    _id: ID
+    title: String!
+    description: String
+    sparks: [Spark]
+  }
+
+  type Spark {
+    _id: ID
+    title: String!
+    description: String!
+    # sparks: [Spark]
+  }
+
   type Auth {
     token: ID!
     user: User!
   }
-  type Focus{
-    _id; ID
-    title:String!
-    description:String
-     sparks:[spark]
-  }
-  type Spark {
-    _id:ID
-    title:String!
-    description:String!
-     sparks:[spark]
-  }
+
   type Query {
     users: [User]!
     user(userID: ID!): User
     me: User
   }
+
   type Mutation {
     addUser(
       firstname: String!
