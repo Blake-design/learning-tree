@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Web Development",
+    "description": "Technologies for building the internet.",
+    "sparks": [
+      {
+        "title": "HTML",
+        "description": "Hyper-Text Markup Language is the frame work from with a webpage is displayed"
+      },
+      {
+        "title": "CSS",
+        "description": "Cascading Style Sheets are how web pages are styled"
+      },
+      {
+        "title": "JS",
+        "description": "JavaScript is a object-model programming language used to add functionality to web pages"
+      }
+    ]
+  },
+  {
+    "title": "Physiology",
+    "description": "A branch of biology that deals with the normal functions of living organisms and their parts.",
+    "sparks": [
+      {
+        "title": "Reciprocal Innervation",
+        "description": "When contraction of a muscle is stimulated, there is a simultaneous inhibition of its antagonist. It is essential for coordinated movement."
+      },
+      {
+        "title": "Synapse",
+        "description": "From the Greek terms “syn-” (together) and “haptein” (to clasp)."
+      },
+      {
+        "title": "Vulpian-Heidenhain-Sherrington Phenomenon",
+        "description": "Associated with Rudolf Peter Heinrich Heidenhain, Edmé Félix Alfred Vulpian, and Charles Scott Sherrington. Describes the slow contraction of denervated skeletal muscle by stimulating autonomic cholinergic fibres innervating its blood vessels."
+      }
+    ]
+  }
+]

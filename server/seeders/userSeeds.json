@@ -1,0 +1,20 @@
+[
+  {
+    "firstName": "Blake",
+    "lastName": "McCarty",
+    "username": "SmartyPants",
+    "email": "bmccarty@synapse.dev",
+    "password": "password01",
+    "focuses": [],
+    "friends": []
+  },
+  {
+    "firstName": "Charles",
+    "lastName": "Sherrington",
+    "username": "IpwichBrainSwitch",
+    "email": "csherrington@synapse.dev",
+    "password": "password02",
+    "focuses": [],
+    "friends": []
+  }
+]

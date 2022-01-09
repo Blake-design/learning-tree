@@ -32,13 +32,13 @@ const UserSchema = new Schema({
   focuses: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Focus',
+      ref: "Focus",
     },
   ],
   friends: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
     },
   ],
 });
