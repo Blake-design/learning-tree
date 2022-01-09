@@ -21,8 +21,8 @@ const resolvers = {
   },
 
   Mutation: {
-    login: async (parent, { username, password }) => {
-      const user = await User.findOne(username);
+    login: async (parent, { userName, password }) => {
+      const user = await User.findOne(userName);
 
       if (!user) {
         throw new AuthenticationError("Wrong username/password");
@@ -40,12 +40,12 @@ const resolvers = {
     },
     addUser: async (
       parent,
-      { firstname, lastname, username, email, password }
+      { firstName, lastName, userName, email, password }
     ) => {
       const user = await User.create({
         firstName,
         lastName,
-        username,
+        userName,
         email,
         password,
       });
@@ -55,14 +55,14 @@ const resolvers = {
     },
     addFriend: async (
       parent,
-      { firstName, lastName, username, email },
+      { firstName, lastName, userName, email },
       context
     ) => {
       if (context.user) {
         const friend = await User.findById({
           firstName,
           lastName,
-          username,
+          userName,
           email,
         });
 
