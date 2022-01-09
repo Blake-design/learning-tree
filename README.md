@@ -6,13 +6,14 @@ License: MIT
 
 
 
-# The Learning Tree
+# Synapse - Learning Application
 
-## What is The Learning Tree?
+## What is Synapse?
 
-Knowledge is a never ending quest. From the first seeding of education your journey will branch out in every direction.
+Every step begins with a spark. 
+The tiniest connections between neurons create pathways the have the power to shape how we see the world.
 
-The Learning Tree is a progressive web application that maps your exploration. You can this use map to find your way when your become lost, refreshing old concepts and quizing yourself on what you have learned.
+Synapse is a progressive web application that maps your exploration of learning. You can this use map to find your way when your become lost, refreshing old concepts and quizing yourself on what you have learned.
 
 
 ## How to use The Learning Tree
@@ -30,7 +31,7 @@ The first time a User logs in they will be prompted to answer the folowing quest
    User responds with any topics that applies to them 
   ----- insert gif --  (Html, CSS, JS)
 
-** Do you have any specialized categories? **
+** Have these led to any additional sparks? **
 user responds  no
 
 
@@ -94,4 +95,5 @@ For desktop:
 
 ## Creators
 
-This project was innovated of Blake McCarty and beautifully designed by Greg Zaragoza.
+This project was crafted as a collaboration between Blake McCarty and Greg Zaragoza. 
+From the begining they worked tirelessly to bring thier own spark of creativity to life. 
