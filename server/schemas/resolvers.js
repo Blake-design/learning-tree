@@ -38,7 +38,10 @@ const resolvers = {
 
       return { token, user };
     },
-    addUser: async (parent, { firstname, lastname, username, email, password }) => {
+    addUser: async (
+      parent,
+      { firstname, lastname, username, email, password }
+    ) => {
       const user = await User.create({
         firstName,
         lastName,
@@ -50,7 +53,11 @@ const resolvers = {
 
       return { token, user };
     },
-    addFriend: async (parent, { firstName, lastName, username, email }, context) => {
+    addFriend: async (
+      parent,
+      { firstName, lastName, username, email },
+      context
+    ) => {
       if (context.user) {
         const friend = await User.findById({
           firstName,
@@ -111,7 +118,7 @@ const resolvers = {
         return User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { friends: { _id: friendId } } },
-          {new: true}
+          { new: true }
         );
       }
       throw new AuthenticationError("Please log in");
@@ -121,7 +128,7 @@ const resolvers = {
         return User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { focuses: { _id: focusId } } },
-          {new: true}
+          { new: true }
         );
       }
       throw new AuthenticationError("Please log in");
@@ -132,7 +139,7 @@ const resolvers = {
         return Focus.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { sparks: { _id: sparkId } } },
-          {new: true}
+          { new: true }
         );
       }
       throw new AuthenticationError("Please log in");

@@ -10,7 +10,8 @@ const typeDefs = gql`
     focuses: [Focus]
     sparks: [Spark]
     friends: [User]
-    
+  }
+
   type Focus {
     _id: ID
     title: String!
