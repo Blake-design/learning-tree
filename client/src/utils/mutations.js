@@ -2,48 +2,48 @@ import { gql } from "@apollo/client";
 
 export const ADD_USER = gql`
   mutation addUser(
-    $firstname: String!
-    $lastname: String!
-    $Username: String!
+    $firstName: String!
+    $lastName: String!
+    $UserName: String!
     $email: String!
     $password: String!
   ) {
     addUser(
-      firstname: $firstname
-      lastname: $lastname
-      username: $username
+      firstName: $firstName
+      lastName: $lastName
+      userName: $userName
       email: $email
       password: $password
     ) {
       token
       user {
         _id
-        firstname
-        lastname
-        username
+        firstName
+        lastName
+        userName
       }
     }
   }
 `;
 export const ADD_FRIEND = gql`
   mutation addFriend(
-    $firstname: String!
-    $lastname: String!
-    $Username: String!
+    $firstName: String!
+    $lastName: String!
+    $UserName: String!
     $email: String!
   ) {
     addFriend(
-      firstname: $firstname
-      lastname: $lastname
-      username: $username
+      firstName: $firstName
+      lastName: $lastName
+      userName: $userName
       email: $email
     ) {
       token
       friend {
         _id
-        firstname
-        lastname
-        username
+        firstName
+        lastName
+        userName
       }
     }
   }
@@ -86,12 +86,12 @@ export const ADD_FOCUS = gql`
 `;
 
 export const LOGIN_USER = gql`
-  mutation login($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
+  mutation login($userName: String!, $password: String!) {
+    login(userName: $userName, password: $password) {
       token
       user {
         _id
-        username
+        userName
       }
     }
   }
@@ -101,7 +101,7 @@ export const REMOVE_USER = gql`
   mutation removeUser($user: String!) {
     removeUser(user: $user) {
       _id
-      username
+      userName
     }
   }
 `;
