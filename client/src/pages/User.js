@@ -22,7 +22,7 @@ const User = () => {
   const user = data?.me || data?.user || {};
 
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours
-  if (Auth.loggedIn() && Auth.getuser().data._id === userId) {
+  if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
     return <Navigate to="/me" />;
   }
 

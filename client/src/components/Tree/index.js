@@ -1,27 +1,12 @@
-import { useD3 } from "../../hooks/useD3";
 import React from "react";
-import * as d3 from "d3";
+import Tree from "react-d3-tree";
 
-function Tree({ data2 }) {
-  const ref = useD3((svg) => {
-    const height = 500;
-    const width = 500;
+// This is a simplified example of an org chart with a depth of 2.
+// Note how deeper levels are defined recursively via the `children` property.
 
-    var treeStructure = d3.tree(data2).size([400, 400]);
-    console.log(treeStructure);
-  }, [data2].length);
-
+export default function OrgChartTree() {
   return (
-    <svg
-      ref={ref}
-      style={{
-        height: 500,
-        width: "100%",
-        marginRight: "0px",
-        marginLeft: "0px",
-      }}
-    ></svg>
+    // `<Tree />` will fill width/height of its container; in this case `#treeWrapper`.
+    <div id="treeWrapper" style={{ width: "50em", height: "20em" }}></div>
   );
 }
-
-export default Tree;

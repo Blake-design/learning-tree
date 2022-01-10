@@ -21,17 +21,17 @@ const resolvers = {
   },
 
   Mutation: {
-    login: async (parent, { userName, password }) => {
-      const user = await User.findOne(userName);
-
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne(email);
+      console.log(email);
       if (!user) {
-        throw new AuthenticationError("Wrong username/password");
+        throw new AuthenticationError("Wrong email/password");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Wrong username/password");
+        throw new AuthenticationError("Wrong email/password");
       }
 
       const token = signToken(user);
@@ -49,6 +49,7 @@ const resolvers = {
         email,
         password,
       });
+      console.log(user);
       const token = signToken(user);
 
       return { token, user };
