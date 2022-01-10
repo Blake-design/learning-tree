@@ -4,7 +4,7 @@ export const ADD_USER = gql`
   mutation addUser(
     $firstName: String!
     $lastName: String!
-    $UserName: String!
+    $userName: String!
     $email: String!
     $password: String!
   ) {
@@ -29,7 +29,7 @@ export const ADD_FRIEND = gql`
   mutation addFriend(
     $firstName: String!
     $lastName: String!
-    $UserName: String!
+    $userName: String!
     $email: String!
   ) {
     addFriend(

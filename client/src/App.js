@@ -1,5 +1,6 @@
 /// import in add-ons
 import BarChart from "./components/Diagram";
+import Tree from "./components/Tree";
 import React from "react";
 import {
   ApolloClient,
@@ -76,6 +77,58 @@ const data = [
   { year: 2016, efficiency: 37.7, sales: 6873000 },
   { year: 2017, efficiency: 39.4, sales: 6081000 },
 ];
+const data2 = [
+  {
+    name: "CEO",
+    children: [
+      {
+        name: "boss1",
+        children: [
+          {
+            name: "mister_a",
+            colname: "level3",
+          },
+          {
+            name: "mister_b",
+            colname: "level3",
+          },
+          {
+            name: "mister_c",
+            colname: "level3",
+          },
+          {
+            name: "mister_d",
+            colname: "level3",
+          },
+        ],
+        colname: "level2",
+      },
+      {
+        name: "boss2",
+        children: [
+          {
+            name: "mister_e",
+            colname: "level3",
+          },
+          {
+            name: "mister_f",
+            colname: "level3",
+          },
+          {
+            name: "mister_g",
+            colname: "level3",
+          },
+          {
+            name: "mister_h",
+            colname: "level3",
+          },
+        ],
+        colname: "level2",
+      },
+    ],
+  },
+];
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -84,6 +137,7 @@ function App() {
           <Header />
           <div className="container">
             <BarChart data={data} />
+            <Tree data={data2} />
             <Routes>
               <Route exact path="/" element={<Home />} />
 
