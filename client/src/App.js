@@ -87,15 +87,9 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-            <div
-              id="treeWrapper"
-              style={{ width: "50em", height: "20em" }}
-            ></div>
-            <Tree data={orgChart} />
-            <div
-              id="treeWrapper"
-              style={{ width: "50em", height: "20em" }}
-            ></div>
+            <div id="treeWrapper" style={{ height: "50em" }}>
+              <Tree data={orgChart} />
+            </div>
             <Routes>
               <Route exact path="/" element={<Home />} />
 
