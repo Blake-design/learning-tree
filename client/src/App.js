@@ -1,6 +1,6 @@
 /// import in add-ons
 
-import Tree from "react-d3-tree";
+import OrgChartTree from "./components/Tree";
 import React from "react";
 import {
   ApolloClient,
@@ -45,41 +45,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const orgChart = {
-  name: "CEO",
-  children: [
-    {
-      name: "Manager",
-      attributes: {
-        department: "Production",
-      },
-      children: [
-        {
-          name: "Foreman",
-          attributes: {
-            department: "Fabrication",
-          },
-          children: [
-            {
-              name: "Worker",
-            },
-          ],
-        },
-        {
-          name: "Foreman",
-          attributes: {
-            department: "Assembly",
-          },
-          children: [
-            {
-              name: "Worker",
-            },
-          ],
-        },
-      ],
-    },
-  ],
-};
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -87,9 +52,7 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-            <div id="treeWrapper" style={{ height: "50em" }}>
-              <Tree data={orgChart} />
-            </div>
+            <OrgChartTree />
             <Routes>
               <Route exact path="/" element={<Home />} />
 
