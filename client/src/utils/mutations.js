@@ -25,29 +25,28 @@ export const ADD_USER = gql`
     }
   }
 `;
-export const ADD_FRIEND = gql`
-  mutation addFriend(
-    $firstName: String!
-    $lastName: String!
-    $userName: String!
-    $email: String!
-  ) {
-    addFriend(
-      firstName: $firstName
-      lastName: $lastName
-      userName: $userName
-      email: $email
-    ) {
+
+export const LOGIN_USER = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       token
-      friend {
+      user {
         _id
-        firstName
-        lastName
         userName
       }
     }
   }
 `;
+
+export const REMOVE_USER = gql`
+  mutation removeUser($user: String!) {
+    removeUser(user: $user) {
+      _id
+      userName
+    }
+  }
+`;
+
 export const ADD_SPARK = gql`
   mutation addSpark($title: String!, $description: String!) {
     addSpark(title: $title, description: $description) {
@@ -62,7 +61,7 @@ export const ADD_SPARK = gql`
 `;
 export const REMOVE_SPARK = gql`
   mutation removeSpark($sparkId: String!) {
-    removeSpark(title: $title, description: $description) {
+    removeSpark(sparkId: $sparkId) {
       token
       spark {
         _id
@@ -84,24 +83,39 @@ export const ADD_FOCUS = gql`
     }
   }
 `;
-
-export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+export const REMOVE_FOCUS = gql`
+  mutation removeFocus($focusId: String!) {
+    removeFocus(focusId: $focusId) {
       token
-      user {
+      focus {
         _id
-        userName
+        title
+        description
       }
     }
   }
 `;
 
-export const REMOVE_USER = gql`
-  mutation removeUser($user: String!) {
-    removeUser(user: $user) {
-      _id
-      userName
+export const ADD_FRIEND = gql`
+  mutation addFriend(
+    $firstName: String!
+    $lastName: String!
+    $userName: String!
+    $email: String!
+  ) {
+    addFriend(
+      firstName: $firstName
+      lastName: $lastName
+      userName: $userName
+      email: $email
+    ) {
+      token
+      friend {
+        _id
+        firstName
+        lastName
+        userName
+      }
     }
   }
 `;
