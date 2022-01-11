@@ -6,6 +6,7 @@ import { useQuery } from "@apollo/client";
 import SparkList from "../components/SparkList";
 import FocusForm from "../components/FocusForm";
 import OrgChartTree from "../components/Tree";
+import Header from "../components/Header";
 
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 
@@ -42,7 +43,9 @@ const User = () => {
 
   return (
     <div>
-      <h2 className="card-header">
+      <Header />
+      <OrgChartTree />
+      {/* <h2 className="card-header">
         {userId ? `${user.name}'s` : "Your"} friends have endorsed these
         sparks...
       </h2>
@@ -53,7 +56,7 @@ const User = () => {
 
       <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>
         <FocusForm userId={user._id} />
-      </div>
+      </div> */}
     </div>
   );
 };
