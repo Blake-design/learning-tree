@@ -108,44 +108,43 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    //   removeUser: async (parent, args, context) => {
-    //     if (context.user) {
-    //       return User.findOneAndDelete({ _id: context.user._id });
-    //     }
-    //     throw new AuthenticationError("Please log in");
-    //   },
-    //   removeFriend: async (parent, { friendId }, context) => {
-    //     if (context.user) {
-    //       return User.findOneAndUpdate(
-    //         { _id: context.user._id },
-    //         { $pull: { friends: { _id: friendId } } },
-    //         { new: true }
-    //       );
-    //     }
-    //     throw new AuthenticationError("Please log in");
-    //   },
-    //   removeFocus: async (parent, { focusId }, context) => {
-    //     if (context.user) {
-    //       return User.findOneAndUpdate(
-    //         { _id: context.user._id },
-    //         { $pull: { focuses: { _id: focusId } } },
-    //         { new: true }
-    //       );
-    //     }
-    //     throw new AuthenticationError("Please log in");
-    //   },
-
-    //   removeSpark: async (parent, { sparkId }, context) => {
-    //     if (context.user) {
-    //       return Focus.findOneAndUpdate(
-    //         { _id: context.user._id },
-    //         { $pull: { sparks: { _id: sparkId } } },
-    //         { new: true }
-    //       );
-    //     }
-    //     throw new AuthenticationError("Please log in");
-    //   },
+    removeUser: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOneAndDelete({ _id: context.user._id });
+      }
+      throw new AuthenticationError("Please log in");
+    },
+    // removeFriend: async (parent, { friendId }, context) => {
+    //   if (context.user) {
+    //     return User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $pull: { friends: { _id: friendId } } },
+    //       { new: true }
+    //     );
+    //   }
+    //   throw new AuthenticationError("Please log in");
     // },
+    removeFocus: async (parent, { focusId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { focuses: { _id: focusId } } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("Please log in");
+    },
+
+    removeSpark: async (parent, { sparkId }, context) => {
+      if (context.user) {
+        return Focus.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { sparks: { _id: sparkId } } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("Please log in");
+    },
   },
 };
 

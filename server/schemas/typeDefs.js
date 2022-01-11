@@ -58,7 +58,12 @@ const typeDefs = gql`
       email: String!
     ): Auth
     login(email: String!, password: String!): Auth
+
     removeUser: User
+
+    removeSpark(spark: String!): User
+
+    removeFocus(focus: String!): User
   }
 `;
 module.exports = typeDefs;
