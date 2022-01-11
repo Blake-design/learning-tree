@@ -11,7 +11,7 @@ License: MIT
 ## What is Synapse?
 
 Every step begins with a spark. 
-The tiniest connections between neurons create pathways the have the power to shape how we see the world.
+The tiniest connections between neurons create pathways that have the power to shape how we see the world.
 
 Synapse is a progressive web application that maps your exploration of learning. You can this use map to find your way when your become lost, refreshing old concepts and quizing yourself on what you have learned.
 
