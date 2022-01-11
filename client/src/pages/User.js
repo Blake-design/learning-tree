@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 
 import SparkList from "../components/SparkList";
 import FocusForm from "../components/FocusForm";
+import OrgChartTree from "../components/Tree";
 
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 
