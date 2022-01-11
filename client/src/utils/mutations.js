@@ -119,3 +119,16 @@ export const ADD_FRIEND = gql`
     }
   }
 `;
+export const REMOVE_FRIEND = gql`
+  mutation removeFriend($friendId: String!) {
+    removeFriend(focusId: $focusId) {
+      token
+      friend {
+        _id
+        firstName
+        lastName
+        userName
+      }
+    }
+  }
+`;

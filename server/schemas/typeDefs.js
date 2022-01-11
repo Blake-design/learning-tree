@@ -64,6 +64,8 @@ const typeDefs = gql`
     removeSpark(spark: String!): User
 
     removeFocus(focus: String!): User
+
+    removeFriend(friend: String!): User
   }
 `;
 module.exports = typeDefs;
