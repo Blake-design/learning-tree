@@ -31,6 +31,24 @@ const Form = () => {
   //     return <h4>You need to be logged in to add sparks!</h4>;
   //   }
 
+  //  ******  this code below will be used to pick which form renders   **********
+
+  //   { user.focus === []?(    <h2 className="card-header">
+  //         Welcome {user.userName} to begin you your map you need to pick a Focus
+  //         of study.
+  //       </h2>
+
+  //       <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>
+  //         <FocusForm userId={user._id} />
+  //       </div>  ):
+  //    (<h2 className="card-header">
+  //         It's time to start adding sparks!
+  //       </h2>
+
+  //       <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>
+  //         <SparkForm userId={user._id} />
+  //       </div> )}
+
   return (
     <div>
       <h2 className="card-header">
