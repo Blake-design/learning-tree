@@ -21,7 +21,7 @@ import Home from "./pages/Home";
 import User from "./pages/User";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import FocusForm from "./pages/FocusForm";
+import Form from "./pages/Form";
 
 //// set graphlQl link
 const httpLink = createHttpLink({
@@ -65,7 +65,7 @@ function App() {
 
               <Route exact path="/:userId" element={<User />} />
 
-              <Route exact path="/addfocus" element={<FocusForm />} />
+              <Route exact path="/addfocus" element={<Form />} />
             </Routes>
           </div>
           <Footer />

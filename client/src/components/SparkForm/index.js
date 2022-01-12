@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
 import { useMutation } from "@apollo/client";
-import { ADD_FOCUS } from "../../utils/mutations";
+import { ADD_SPARK } from "../../utils/mutations";
 
-const FocusForm = ({ userId }) => {
+const SparkForm = ({ userId }) => {
   const [formState, setFormState] = useState({
     title: "",
     description: "",
   });
 
-  const [addFocus, { error, data }] = useMutation(ADD_FOCUS);
+  const [addSpark, { error, data }] = useMutation(ADD_SPARK);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -26,7 +26,7 @@ const FocusForm = ({ userId }) => {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data } = await addFocus({
+      const { data } = await addSpark({
         variables: { ...formState },
       });
       console.log(data);
@@ -68,4 +68,4 @@ const FocusForm = ({ userId }) => {
   );
 };
 
-export default FocusForm;
+export default SparkForm;
