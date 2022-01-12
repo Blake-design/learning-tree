@@ -1,65 +1,69 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
 
+import { useMutation } from "@apollo/client";
 import { ADD_FOCUS } from "../../utils/mutations";
 
-import Auth from "../../utils/auth";
-
 const FocusForm = ({ userId }) => {
-  const [focus, setFocus] = useState("");
+  const [formState, setFormState] = useState({
+    title: "",
+    description: "",
+  });
 
-  const [addFocus, { error }] = useMutation(ADD_FOCUS);
+  const [addFocus, { error, data }] = useMutation(ADD_FOCUS);
 
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+  console.log(data);
+  // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(formState);
     try {
-      const data = await addFocus({
-        variables: { userId, focus },
+      const { data } = await addFocus({
+        variables: { ...formState },
       });
-
-      setFocus("");
-    } catch (err) {
-      console.error(err);
+      console.log(data);
+      // Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
     }
   };
 
   return (
     <div>
-      <h4>Create more sparks below.</h4>
+      <form onSubmit={handleFormSubmit}>
+        <input
+          className="form-input"
+          placeholder="Please enter a title"
+          name="title"
+          type="text"
+          value={formState.title}
+          onChange={handleChange}
+        />
 
-      {Auth.loggedIn() ? (
-        <form
-          className="flex-row justify-center justify-space-between-md align-center"
-          onSubmit={handleFormSubmit}
+        <input
+          className="form-input"
+          placeholder="Please enter a brief description"
+          name="description"
+          type="text"
+          value={formState.description}
+          onChange={handleChange}
+        />
+        <button
+          className="btn btn-block btn-info"
+          style={{ cursor: "pointer" }}
+          type="submit"
         >
-          <div className="col-12 col-lg-9">
-            <input
-              placeholder="Endorse some sparks..."
-              value={focus}
-              className="form-input w-100"
-              onChange={(event) => setFocus(event.target.value)}
-            />
-          </div>
-
-          <div className="col-12 col-lg-3">
-            <button className="btn btn-info btn-block py-3" type="submit">
-              Endorse spark
-            </button>
-          </div>
-          {error && (
-            <div className="col-12 my-3 bg-danger text-white p-3">
-              {error.message}
-            </div>
-          )}
-        </form>
-      ) : (
-        <p>
-          You need to be logged in to endorse sparks. Please{" "}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
+          Submit
+        </button>
+      </form>
     </div>
   );
 };
