@@ -5,14 +5,13 @@ import { useQuery } from "@apollo/client";
 
 import SparkList from "../components/SparkList";
 import FocusForm from "../components/FocusForm";
-import OrgChartTree from "../components/Tree";
 import Header from "../components/Header";
 
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
-const User = () => {
+const AddFocusPage = () => {
   // const { userId } = useParams();
   const { userId } = useParams();
   // If there is no `userId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
@@ -44,7 +43,7 @@ const User = () => {
   return (
     <div>
       <Header />
-      <OrgChartTree />
+      <p>Add Focus form goes here</p>
       {/* <h2 className="card-header">
         {userId ? `${user.name}'s` : "Your"} friends have endorsed these
         sparks...
@@ -61,4 +60,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default AddFocusPage;
