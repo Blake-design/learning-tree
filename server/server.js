@@ -45,7 +45,7 @@ async function startApolloServer() {
   server.applyMiddleware({ app });
 
   ///
-  app.use(express.urlencoded({ extened: true }));
+  app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
 
   ///// if in production send files to client build

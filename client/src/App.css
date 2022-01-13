@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,84 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* .App {
+  height: 100%;
+} */
+
+html, body {
+  height: 100vh;
+  scroll-behavior: smooth;
+  font-family: 'Barlow', sans-serif;
+}
+
+#splash {
+  padding: 200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#splash h1 {
+  font-size: 90pt;
+}
+
+#splash h3 {
+  font-size: 70pt;
+}
+
+#splash p {
+  margin-top: 50px;
+  font-size: 40pt;
+  font-weight: 100;
+}
+
+button {
+  display: inline;
+  margin-top: 10px;
+  margin-left: 3px;
+  margin-right: 3px;
+  border: 1px solid black;
+  border-radius: 50px;
+  background-color: transparent;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: 'Barlow', sans-serif;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+#splash button {
+  margin-top: 50px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+  letter-spacing: 1px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  padding-left: 200px;
+  padding-right: 200px;
+  background-image: linear-gradient(90deg, #4174ff, #7673c0);
+  /* border-top: 1px solid black; */
+  color: white;
+}
+
+footer p {
+  display: inline;
+  font-size: 8pt;
 }
