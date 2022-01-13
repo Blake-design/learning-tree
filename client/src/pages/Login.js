@@ -1,4 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
+import { useUser } from "../utils/UserContext";
+// Import our reducer
+import { reducer } from "../utils/reducers";
+
+// Import our action
+import { SUBMIT, CHANGE } from "../utils/actions";
+
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -8,6 +15,11 @@ import Auth from "../utils/auth";
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  const initialState = useUser();
+
+  // Set up our useReducer hook. Accepts two arguments - the reducer and an initial state
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -22,13 +34,23 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+
     try {
       const { data } = await login({
         variables: { ...formState },
       });
-      console.log({ data });
+
+      dispatch({
+        type: CHANGE,
+        value: data,
+      });
+
+      dispatch({
+        type: SUBMIT,
+      });
+
       Auth.login(data.login.token);
+      console.log(data);
     } catch (e) {
       console.error(e);
     }
@@ -49,7 +71,7 @@ const Login = (props) => {
             {data ? (
               <p>
                 Success! You may now head{" "}
-                <Link to={"/me"}>to your dashboard.</Link>
+                <Link to={"/" + data.login.user._id}>to your dashboard.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>

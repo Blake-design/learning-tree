@@ -17,7 +17,7 @@ const Form = () => {
 
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
   const user = data?.me || data?.user || {};
-  console.log(userId);
+
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours
   //   if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
   //     return <Navigate to="/sparks" />;
