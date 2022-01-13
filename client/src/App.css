@@ -116,3 +116,11 @@ footer p {
   display: inline;
   font-size: 8pt;
 }
+
+footer button {
+  margin: 0;
+  padding: 0;
+  font-size: 8pt;
+  border: none;
+  color: white;
+}

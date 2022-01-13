@@ -13,7 +13,7 @@ const Footer = () => {
             className="btn btn-dark mb-3"
             onClick={() => navigate(-1)}
           >
-            &larr; Go Back
+            &larr; BACK
           </button>
         )}
         <p>&copy; {new Date().getFullYear()} SYNAPSE</p>
