@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_FOCUS } from "../../utils/mutations";
 
-const FocusForm = ({ userId }) => {
+const FocusForm = () => {
   const [formState, setFormState] = useState({
     title: "",
     description: "",
@@ -20,16 +20,16 @@ const FocusForm = ({ userId }) => {
       [name]: value,
     });
   };
-  console.log(data);
+
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+
     try {
       const { data } = await addFocus({
         variables: { ...formState },
       });
-      console.log(data);
+
       // Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
