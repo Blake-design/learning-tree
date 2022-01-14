@@ -15,9 +15,15 @@ const resolvers = {
 
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return User.findOne({ userName: context.user.userName });
       }
       throw new AuthenticationError("Please log in");
+    },
+    sparks: async (parent, { userName }) => {
+      return Spark.find({ userName: userName });
+    },
+    focus: async (parent, { userName }) => {
+      return Focus.find({ userName: userName });
     },
   },
 
@@ -114,7 +120,7 @@ const resolvers = {
       if (context.user) {
         return Focus.findOneAndUpdate(
           { userName: context.user.userName },
-          { $push: { sparks: { _id: sparkId } } },
+          { $pull: { sparks: { _id: sparkId } } },
           { new: true }
         );
       }

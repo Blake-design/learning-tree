@@ -20,7 +20,7 @@ const User = () => {
   const userManager = useUser();
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
   const user = data?.me || data?.user || {};
-  console.log(userId);
+
   console.log(data);
 
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours
@@ -45,6 +45,8 @@ const User = () => {
     <div>
       <Header />
       <OrgChartTree />
+
+      <h1>{userManager.user.username}</h1>
       {/* <h2 className="card-header">
         {userId ? `${user.name}'s` : "Your"} friends have endorsed these
         sparks...

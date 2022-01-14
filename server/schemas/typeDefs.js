@@ -37,8 +37,8 @@ const typeDefs = gql`
     users: [User]!
     user(userName: String!): User
     me: User
-    sparks(userName: String!): Spark
-    focus(userName: String!): Focus
+    sparks(userName: String!): [Spark]
+    focus(userName: String!): [Focus]
   }
 
   type Mutation {
