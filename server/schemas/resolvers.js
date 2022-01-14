@@ -70,10 +70,10 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { focuses: focus } }
+          { $push: { focuses: focus._id } }
         );
 
-        return focus;
+        return { focus };
       }
       throw new AuthenticationError("You need to be logged in!");
     },

@@ -1,11 +1,8 @@
-import React, { useState, useReducer } from "react";
-import { useUser } from "../utils/UserContext";
-// Import our reducer
-import { reducer } from "../utils/reducers";
+import React, { useState } from "react";
 
 // Import our action
-import { SUBMIT, CHANGE } from "../utils/actions";
 
+import { useUser } from "../utils/UserContext";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -16,10 +13,7 @@ const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
-  const initialState = useUser();
-
-  // Set up our useReducer hook. Accepts two arguments - the reducer and an initial state
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const userManager = useUser();
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -34,27 +28,9 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    await userManager.handleSigin(formState);
 
-    try {
-      const { data } = await login({
-        variables: { ...formState },
-      });
-
-      dispatch({
-        type: CHANGE,
-        value: data,
-      });
-
-      dispatch({
-        type: SUBMIT,
-      });
-
-      Auth.login(data.login.token);
-      console.log(data);
-    } catch (e) {
-      console.error(e);
-    }
-
+    console.log("this is the user state ", userManager.user);
     // clear form values
     setFormState({
       email: "",
@@ -68,10 +44,10 @@ const Login = (props) => {
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
-            {data ? (
+            {Object.keys(userManager.user).length ? (
               <p>
                 Success! You may now head{" "}
-                <Link to={"/" + data.login.user._id}>to your dashboard.</Link>
+                <Link to="/me">to your dashboard.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>

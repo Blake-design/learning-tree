@@ -17,12 +17,11 @@ const User = () => {
   const { userId } = useParams();
   // If there is no `userId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
   const { loading, data } = useQuery(QUERY_ME);
-  const initialState = useUser();
+
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
   const user = data?.me || data?.user || {};
   console.log(userId);
   console.log(data);
-  console.log(initialState);
 
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours
   // if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
