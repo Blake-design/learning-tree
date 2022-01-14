@@ -12,8 +12,8 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_SINGLE_USER = gql`
-  query singleUser($userId: ID!) {
-    user(userId: $userId) {
+  query user($userName: String!) {
+    user(userName: $userName) {
       _id
       firstName
       lastName
@@ -27,6 +27,24 @@ export const QUERY_ME = gql`
     me {
       _id
       userName
+    }
+  }
+`;
+export const QUERY_USER_SPARKS = gql`
+  query userSparks($userName: String!) {
+    sparks(userName: $userName) {
+      _id
+      title
+      description
+    }
+  }
+`;
+export const QUERY_USER_FOCUS = gql`
+  query userfocus($userName: String!) {
+    focus(userName: $userName) {
+      _id
+      title
+      description
     }
   }
 `;

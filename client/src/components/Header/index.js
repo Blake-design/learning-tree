@@ -23,8 +23,8 @@ const Header = () => {
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btn-lg btn-primary m-2" to="/addfocus">
-                Add New Focus
+              <Link className="btn btn-lg btn-primary m-2" to="/create">
+                Create
               </Link>
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout

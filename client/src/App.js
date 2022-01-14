@@ -66,7 +66,7 @@ function App() {
 
                 <Route exact path="/:userId" element={<User />} />
 
-                <Route exact path="/addfocus" element={<Form />} />
+                <Route exact path="/create" element={<Form />} />
               </Routes>
             </div>
             <Footer />
