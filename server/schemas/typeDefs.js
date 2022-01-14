@@ -29,6 +29,8 @@ const typeDefs = gql`
   type Auth {
     token: ID!
     user: User!
+    focus: Focus!
+    spark: Spark!
   }
 
   type Query {
