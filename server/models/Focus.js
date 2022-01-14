@@ -1,12 +1,12 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 // const dateFormat = require('../utils/dateFormat');
 
 const focusSchema = new Schema({
-//   createdBy: {
-//     type: String,
-//     required: true,
-//     trim: true,
-//   },
+  //   createdBy: {
+  //     type: String,
+  //     required: true,
+  //     trim: true,
+  //   },
   title: {
     type: String,
     required: true,
@@ -20,11 +20,11 @@ const focusSchema = new Schema({
   sparks: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Spark',
+      ref: "Spark",
     },
   ],
 });
 
-const Focus = model('Focus', focusSchema);
+const Focus = model("Focus", focusSchema);
 
 module.exports = Focus;

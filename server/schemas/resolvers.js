@@ -1,4 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
+const { query } = require("express");
 const { User, Focus, Spark } = require("../models");
 const { signToken } = require("../utils/auth");
 
@@ -54,9 +55,10 @@ const resolvers = {
 
       return { token, user };
     },
+
     removeUser: async (parent, args, context) => {
       if (context.user) {
-        return User.findOneAndDelete({ _id: context.user._id });
+        return User.findOneAndDelete({ _id: context.user.userName });
       }
       throw new AuthenticationError("Please log in");
     },
@@ -69,8 +71,10 @@ const resolvers = {
         });
 
         await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $push: { focuses: focus._id } }
+          { userName: context.user.userName },
+          { $push: { focuses: focus } },
+          { new: true },
+          console.log(context.user.userName)
         );
 
         return { focus };
