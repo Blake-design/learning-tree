@@ -70,7 +70,7 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { focus: _id } }
+          { $push: { focuses: focus._id } }
         );
 
         return { focus };
