@@ -66,6 +66,7 @@ const resolvers = {
     addFocus: async (parent, { title, description }, context) => {
       if (context.user) {
         const focus = await Focus.create({
+          userName: context.user.userName,
           title,
           description,
         });
@@ -73,8 +74,7 @@ const resolvers = {
         await User.findOneAndUpdate(
           { userName: context.user.userName },
           { $push: { focuses: focus } },
-          { new: true },
-          console.log(context.user.userName)
+          { new: true }
         );
 
         return { focus };
@@ -93,17 +93,19 @@ const resolvers = {
     },
 
     addSpark: async (parent, { title, description }, context) => {
+      console.log("we hit the function");
       if (context.user) {
         const spark = await Spark.create({
+          userName: context.user.userName,
           title,
           description,
         });
-
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { sparks: spark } }
+        console.log("create was ran");
+        await Focus.findOneAndUpdate(
+          { userName: context.user.userName },
+          { $push: { sparks: spark } }
         );
-
+        console.log("find on and update ran ");
         return spark;
       }
       throw new AuthenticationError("You need to be logged in!");
@@ -111,8 +113,8 @@ const resolvers = {
     removeSpark: async (parent, { sparkId }, context) => {
       if (context.user) {
         return Focus.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { sparks: { _id: sparkId } } },
+          { userName: context.user.userName },
+          { $push: { sparks: { _id: sparkId } } },
           { new: true }
         );
       }

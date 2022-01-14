@@ -4,6 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import FocusForm from "../components/FocusForm";
+import SparkForm from "../components/SparkForm";
 
 import { QUERY_ME } from "../utils/queries";
 
@@ -57,7 +58,7 @@ const Form = () => {
       </h2>
 
       <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>
-        <FocusForm userId={user._id} />
+        <SparkForm userId={user._id} />
       </div>
     </div>
   );
