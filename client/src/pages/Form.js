@@ -7,7 +7,7 @@ import FocusForm from "../components/FocusForm";
 import SparkForm from "../components/SparkForm";
 
 import { QUERY_ME } from "../utils/queries";
-
+import { useUser } from "../utils/UserContext";
 import Auth from "../utils/auth";
 
 const Form = () => {
@@ -15,7 +15,7 @@ const Form = () => {
   const { userId } = useParams();
   // If there is no `userId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
   const { loading, data } = useQuery(QUERY_ME);
-
+  const userManager = useUser();
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
   const user = data?.me || data?.user || {};
 
@@ -52,10 +52,9 @@ const Form = () => {
 
   return (
     <div>
-      <h2 className="card-header">
-        Welcome {user.userName} to begin you your map you need to pick a Focus
-        of study.
-      </h2>
+      <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>
+        <FocusForm userId={user._id} />
+      </div>
 
       <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>
         <SparkForm userId={user._id} />

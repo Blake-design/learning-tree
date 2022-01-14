@@ -2,13 +2,14 @@ import React, { useState } from "react";
 
 import { useMutation } from "@apollo/client";
 import { ADD_SPARK } from "../../utils/mutations";
+import { useUser } from "../../utils/UserContext";
 
 const SparkForm = ({ userId }) => {
   const [formState, setFormState] = useState({
     title: "",
     description: "",
   });
-
+  const userManager = useUser();
   const [addSpark, { error, data }] = useMutation(ADD_SPARK);
 
   // update state based on form input changes
@@ -38,6 +39,9 @@ const SparkForm = ({ userId }) => {
 
   return (
     <div>
+      <h2 className="card-header">
+        Great job {userManager.user.userName}! please enter sparks here.
+      </h2>
       <form onSubmit={handleFormSubmit}>
         <input
           className="form-input"

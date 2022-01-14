@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 import { useMutation } from "@apollo/client";
 import { ADD_FOCUS } from "../../utils/mutations";
-
+import { useUser } from "../../utils/UserContext";
 const FocusForm = () => {
   const [formState, setFormState] = useState({
     title: "",
     description: "",
   });
-
+  const userManager = useUser();
   const [addFocus, { error, data }] = useMutation(ADD_FOCUS);
 
   // update state based on form input changes
@@ -38,6 +38,10 @@ const FocusForm = () => {
 
   return (
     <div>
+      <h2 className="card-header">
+        Welcome {userManager.user.userName} to begin you your map you need to
+        pick a Focus of study.
+      </h2>
       <form onSubmit={handleFormSubmit}>
         <input
           className="form-input"
