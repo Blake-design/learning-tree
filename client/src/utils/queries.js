@@ -41,6 +41,7 @@ export const QUERY_FOCUS = gql`
   query focus($userName: String!) {
     focus(userName: $userName) {
       _id
+      title
     }
   }
 `;
