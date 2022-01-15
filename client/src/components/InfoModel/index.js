@@ -23,25 +23,35 @@ const InfoModel = ({ user }) => {
 
   const [
     { loading: loading1, data: data },
-    { loading: loading2, data: sparks },
+    { loading: loading2, data: data2 },
   ] = Query();
 
   if (loading1) {
     return <div>Loading...</div>;
   }
+  if (loading2) {
+    return <div>Loading...</div>;
+  }
 
-  console.log(user.userName);
-  console.log(sparks);
+  console.log(data);
+  console.log(data2);
   if (!data.focus) {
     return <h3>this user currently has no focus</h3>;
   }
   console.log();
   return (
     <div>
-      <p>This is {user.userName}'s tree data</p>
-      <p>this user has {data.focus.length} Focus</p>
-      {data.focus.map((focal) => {
-        return <button key="title"> {focal.title}</button>;
+      {data?.focus.map((focal) => {
+        return (
+          <li key={focal._id}>
+            {focal.title}
+            <ol>
+              {data2?.sparks.map((spark) => {
+                return <li key={spark._id}>{spark.title}</li>;
+              })}
+            </ol>
+          </li>
+        );
       })}
     </div>
   );

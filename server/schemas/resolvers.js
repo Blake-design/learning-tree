@@ -118,6 +118,30 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+
+    addSpark2Spark: async (
+      parent,
+      { parentTitle, title, description },
+      context
+    ) => {
+      console.log("we hit the function");
+      if (context.user) {
+        const spark = await Spark.create({
+          userName: context.user.userName,
+          title,
+          description,
+        });
+        console.log("create was ran");
+        await Spark.findOneAndUpdate(
+          { title: parentTitle },
+          { $push: { sparks: spark } }
+        );
+        console.log("find on and update ran ");
+        return spark;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
     removeSpark: async (parent, { title }, context) => {
       if (context.user) {
         const sparkId = await Spark.findOneAndDelete({ title: title });

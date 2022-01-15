@@ -59,6 +59,22 @@ export const ADD_SPARK = gql`
     }
   }
 `;
+export const ADD_SPARK_2_SPARK = gql`
+  mutation addSpark(
+    $parentTitle: String!
+    $title: String!
+    $description: String!
+  ) {
+    addSpark(title: $parentTitle, title: $title, description: $description) {
+      token
+      spark {
+        _id
+        title
+        description
+      }
+    }
+  }
+`;
 export const REMOVE_SPARK = gql`
   mutation removeSpark($sparkId: String!) {
     removeSpark(sparkId: $sparkId) {

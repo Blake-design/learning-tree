@@ -8,7 +8,6 @@ const typeDefs = gql`
     userName: String!
     email: String!
     focuses: [Focus]
-    sparks: [Spark]
     friends: [User]
   }
 
@@ -53,6 +52,13 @@ const typeDefs = gql`
     addFocus(_id: ID, title: String!, description: String!): Auth
 
     addSpark(_id: ID, title: String!, description: String!): Auth
+
+    addSpark2Spark(
+      _id: ID
+      parentTitle: String!
+      title: String!
+      description: String!
+    ): Auth
 
     addFriend(
       _id: ID

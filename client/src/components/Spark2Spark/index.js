@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 
 import { useMutation } from "@apollo/client";
-import { ADD_SPARK, ADD_SPARK_2_SPARK } from "../../utils/mutations";
+import { ADD_SPARK_2_SPARK } from "../../utils/mutations";
 import { useUser } from "../../utils/UserContext";
 
-const SparkForm = ({ userId }) => {
+const Spark2Spark = ({ userId }) => {
   const [formState, setFormState] = useState({
+    parentTitle: "",
     title: "",
     description: "",
   });
   const userManager = useUser();
-  const [addSpark, { error1, data1 }] = useMutation(ADD_SPARK);
-  const [addSpark2Spark, { error2, data2 }] = useMutation(ADD_SPARK_2_SPARK);
+
+  const [addSpark2Spark, { error, data }] = useMutation(ADD_SPARK_2_SPARK);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -28,7 +29,7 @@ const SparkForm = ({ userId }) => {
     event.preventDefault();
 
     try {
-      const { data1 } = await addSpark({
+      const { data1 } = await addSpark2Spark({
         variables: { ...formState },
       });
 
@@ -44,6 +45,14 @@ const SparkForm = ({ userId }) => {
         Great job {userManager.user.userName}! please enter sparks here.
       </h2>
       <form onSubmit={handleFormSubmit}>
+        <input
+          className="form-input"
+          placeholder="Please enter parent"
+          name="title"
+          type="text"
+          value={formState.parentTitle}
+          onChange={handleChange}
+        />
         <input
           className="form-input"
           placeholder="Please enter a title"
@@ -73,4 +82,4 @@ const SparkForm = ({ userId }) => {
   );
 };
 
-export default SparkForm;
+export default Spark2Spark;

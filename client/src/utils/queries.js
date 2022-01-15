@@ -42,6 +42,9 @@ export const QUERY_FOCUS = gql`
     focus(userName: $userName) {
       _id
       title
+      sparks {
+        _id
+      }
     }
   }
 `;
