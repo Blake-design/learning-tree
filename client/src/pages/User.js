@@ -7,6 +7,7 @@ import { useQuery } from "@apollo/client";
 // import FocusForm from "../components/FocusForm";
 import OrgChartTree from "../components/Tree";
 import Header from "../components/Header";
+import InfoModel from "../components/InfoModel";
 
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 import { useUser } from "../utils/UserContext";
@@ -21,8 +22,6 @@ const User = () => {
   const userManager = useUser();
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
   const user = data?.me || data?.user || {};
-
-  console.log(data);
 
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data.userName === userParam) {
@@ -56,9 +55,8 @@ const User = () => {
         <SparkList sparks={user.sparks} isLoggedInUser={!userId && true} />
       )}
 
-      <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>
-        <FocusForm userId={user._id} />
-      </div> */}
+      <h1>welcome to page of {user.userName}</h1>
+      <InfoModel user={user} />
     </div>
   );
 };
