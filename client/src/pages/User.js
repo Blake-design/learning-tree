@@ -53,10 +53,10 @@ const User = () => {
 
       {user.sparks?.length > 0 && (
         <SparkList sparks={user.sparks} isLoggedInUser={!userId && true} />
-      )}
+      )}*/}
 
       <h1>welcome to page of {user.userName}</h1>
-      <InfoModel user={user} />
+      <InfoModel user={user} /> 
     </div>
   );
 };
