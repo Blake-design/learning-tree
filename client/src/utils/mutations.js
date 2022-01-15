@@ -124,7 +124,6 @@ export const ADD_FRIEND = gql`
       userName: $userName
       email: $email
     ) {
-      token
       friend {
         _id
         firstName
@@ -137,7 +136,6 @@ export const ADD_FRIEND = gql`
 export const REMOVE_FRIEND = gql`
   mutation removeFriend($friendId: String!) {
     removeFriend(focusId: $focusId) {
-      token
       friend {
         _id
         firstName
