@@ -45,9 +45,8 @@ const User = () => {
   return (
     <div>
       <Header />
+      <h1>{data.me.userName}'s Tree</h1>
       <OrgChartTree />
-
-      <h1>{userManager.user.username}</h1>
       {/* <h2 className="card-header">
         {userId ? `${user.name}'s` : "Your"} friends have endorsed these
         sparks...
