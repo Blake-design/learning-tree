@@ -20,6 +20,7 @@ const User = () => {
     variables: { userName: userParam },
   });
   const userManager = useUser();
+  console.log(data);
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
   const user = data?.me || data?.user || {};
 
