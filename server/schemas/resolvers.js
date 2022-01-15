@@ -87,8 +87,9 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    removeFocus: async (parent, { focusId }, context) => {
+    removeFocus: async (parent, { title }, context) => {
       if (context.user) {
+        const focusId = Focus.findOneDelete({ title: title });
         return User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { focuses: { _id: focusId } } },
@@ -116,9 +117,10 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    removeSpark: async (parent, { sparkId }, context) => {
+    removeSpark: async (parent, { title }, context) => {
       if (context.user) {
-        return Focus.findOneAndUpdate(
+        const sparkId = await Spark.findOneAndDelete({ title: title });
+        await User.findOneAndUpdate(
           { userName: context.user.userName },
           { $pull: { sparks: { _id: sparkId } } },
           { new: true }
@@ -127,33 +129,24 @@ const resolvers = {
       throw new AuthenticationError("Please log in");
     },
 
-    addFriend: async (
-      parent,
-      { firstName, lastName, userName, email },
-      context
-    ) => {
+    addFriend: async (parent, { userName }, context) => {
       if (context.user) {
-        const friend = await User.findById({
-          firstName,
-          lastName,
-          userName,
-          email,
-        });
-
+        const friend = await User.findOne({ userName: userName });
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { friends: friend } }
+          { $push: { friends: friend } }
         );
 
         return thought;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    removeFriend: async (parent, { friendId }, context) => {
+    removeFriend: async (parent, { userName }, context) => {
       if (context.user) {
-        return User.findOneAndUpdate(
+        const friend = await User.findOneDelete({ userName: userName });
+        User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { friends: { _id: friendId } } },
+          { $pull: { friends: { _id: friend } } },
           { new: true }
         );
       }
