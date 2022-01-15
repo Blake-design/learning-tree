@@ -41,7 +41,7 @@ const InfoModel = ({ user }) => {
       <p>This is {user.userName}'s tree data</p>
       <p>this user has {data.focus.length} Focus</p>
       {data.focus.map((focal) => {
-        return <p key="title">The titles are {focal.title}</p>;
+        return <button key="title"> {focal.title}</button>;
       })}
     </div>
   );
