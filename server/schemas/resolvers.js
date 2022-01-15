@@ -17,8 +17,9 @@ const resolvers = {
       if (context.user) {
         return User.findOne({ userName: context.user.userName });
       }
-      throw new AuthenticationError("Please log in");
+      throw new AuthenticationError("Please log in to view your profile.");
     },
+
     sparks: async (parent, { userName }) => {
       return Spark.find({ userName: userName });
     },

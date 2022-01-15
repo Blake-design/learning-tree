@@ -20,6 +20,7 @@ const User = () => {
     variables: { userName: userParam },
   });
   const userManager = useUser();
+  console.log(data);
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
   const user = data?.me || data?.user || {};
 
@@ -44,8 +45,8 @@ const User = () => {
   return (
     <div>
       <Header />
-        <div id="user-tree">
-          <h1>{data.me.userName}'s Tree</h1>
+        <div id="user-tree"> 
+          {userParam ? <h1>{user.userName}'s Tree</h1> : <h1>My Tree</h1>}
           <OrgChartTree />
         </div>
       {/* <h2 className="card-header">
