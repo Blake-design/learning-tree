@@ -33,9 +33,7 @@ const InfoModel = ({ user }) => {
     return <div>Loading...</div>;
   }
 
-  console.log(data);
-  console.log(data2);
-  if (!data.focus) {
+  if (data?.focus) {
     return <h3>this user currently has no focus</h3>;
   }
   console.log();

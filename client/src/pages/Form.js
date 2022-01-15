@@ -16,7 +16,7 @@ const Form = () => {
   // If there is no `userId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
   const { loading, data } = useQuery(QUERY_ME);
   const userManager = useUser();
-  console.log(data);
+
   const user = data?.me || {};
   if (loading) {
     return <div>Loading...</div>;

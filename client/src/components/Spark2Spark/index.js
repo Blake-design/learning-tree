@@ -29,7 +29,7 @@ const Spark2Spark = ({ userId }) => {
     event.preventDefault();
 
     try {
-      const { data1 } = await addSpark2Spark({
+      const { data } = await addSpark2Spark({
         variables: { ...formState },
       });
 
@@ -48,7 +48,7 @@ const Spark2Spark = ({ userId }) => {
         <input
           className="form-input"
           placeholder="Please enter parent"
-          name="title"
+          name="parentTitle"
           type="text"
           value={formState.parentTitle}
           onChange={handleChange}
