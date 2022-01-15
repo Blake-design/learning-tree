@@ -1,6 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { query } = require("express");
-const { User, Focus, Spark } = require("../models");
+const { User, Spark } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -22,9 +22,6 @@ const resolvers = {
 
     sparks: async (parent, { userName }) => {
       return Spark.find({ userName: userName });
-    },
-    focus: async (parent, { userName }) => {
-      return Focus.find({ userName: userName });
     },
   },
 
@@ -70,36 +67,6 @@ const resolvers = {
       throw new AuthenticationError("Please log in");
     },
 
-    addFocus: async (parent, { title, description }, context) => {
-      if (context.user) {
-        const focus = await Focus.create({
-          userName: context.user.userName,
-          title,
-          description,
-        });
-
-        await User.findOneAndUpdate(
-          { userName: context.user.userName },
-          { $push: { focuses: focus } },
-          { new: true }
-        );
-
-        return { focus };
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
-    removeFocus: async (parent, { title }, context) => {
-      if (context.user) {
-        const focusId = Focus.findOneDelete({ title: title });
-        return User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { focuses: { _id: focusId } } },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError("Please log in");
-    },
-
     addSpark: async (parent, { title, description }, context) => {
       console.log("we hit the function");
       if (context.user) {
@@ -109,7 +76,7 @@ const resolvers = {
           description,
         });
         console.log("create was ran");
-        await Focus.findOneAndUpdate(
+        await User.findOneAndUpdate(
           { userName: context.user.userName },
           { $push: { sparks: spark } }
         );

@@ -7,28 +7,20 @@ const typeDefs = gql`
     lastName: String!
     userName: String!
     email: String!
-    focuses: [Focus]
-    friends: [User]
-  }
-
-  type Focus {
-    _id: ID
-    title: String!
-    description: String
     sparks: [Spark]
+    friends: [User]
   }
 
   type Spark {
     _id: ID
     title: String!
     description: String!
-    # sparks: [Spark]
+    sparks: [Spark]
   }
 
   type Auth {
     token: ID!
     user: User!
-    focus: Focus!
     spark: Spark!
   }
 
@@ -37,7 +29,6 @@ const typeDefs = gql`
     user(userName: String!): User
     me: User
     sparks(userName: String!): [Spark]
-    focus(userName: String!): [Focus]
   }
 
   type Mutation {
@@ -48,8 +39,6 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-
-    addFocus(_id: ID, title: String!, description: String!): Auth
 
     addSpark(_id: ID, title: String!, description: String!): Auth
 
@@ -72,8 +61,6 @@ const typeDefs = gql`
     removeUser: User
 
     removeSpark(title: String!): Spark
-
-    removeFocus(title: String!): Focus
 
     removeFriend(userName: String!): User
   }

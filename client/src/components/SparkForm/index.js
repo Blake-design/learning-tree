@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { useMutation } from "@apollo/client";
-import { ADD_SPARK, ADD_SPARK_2_SPARK } from "../../utils/mutations";
+import { ADD_SPARK } from "../../utils/mutations";
 import { useUser } from "../../utils/UserContext";
 
 const SparkForm = ({ userId }) => {
@@ -11,7 +11,6 @@ const SparkForm = ({ userId }) => {
   });
   const userManager = useUser();
   const [addSpark, { error1, data1 }] = useMutation(ADD_SPARK);
-  const [addSpark2Spark, { error2, data2 }] = useMutation(ADD_SPARK_2_SPARK);
 
   // update state based on form input changes
   const handleChange = (event) => {
