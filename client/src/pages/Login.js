@@ -45,7 +45,7 @@ const Login = (props) => {
           <div className="card-body">
             {Object.keys(userManager.user).length ? (
               <p>
-                Success! You may now head{" "}
+                Welcome {userManager.user.user.userName}! You may now head{" "}
                 <Link to="/me">to your dashboard.</Link>
               </p>
             ) : (
