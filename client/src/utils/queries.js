@@ -49,6 +49,7 @@ export const QUERY_SPARKS = gql`
   query sparks($userName: String!) {
     sparks(userName: $userName) {
       _id
+      title
     }
   }
 `;

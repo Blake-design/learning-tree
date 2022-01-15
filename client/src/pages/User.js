@@ -44,21 +44,11 @@ const User = () => {
   return (
     <div>
       <Header />
-        <div id="user-tree">
-          <h1>{data.me.userName}'s Tree</h1>
-          <OrgChartTree />
-        </div>
-      {/* <h2 className="card-header">
-        {userId ? `${user.name}'s` : "Your"} friends have endorsed these
-        sparks...
-      </h2>
-
-      {user.sparks?.length > 0 && (
-        <SparkList sparks={user.sparks} isLoggedInUser={!userId && true} />
-      )}*/}
-
-      {/* <h1>welcome to page of {data.user.userName}</h1>
-      <InfoModel user={user} />  */}
+      <div id="user-tree">
+        <h1>{user.userName}'s Tree</h1>
+        {/* <OrgChartTree /> */}
+        <InfoModel user={user} />
+      </div>
     </div>
   );
 };
