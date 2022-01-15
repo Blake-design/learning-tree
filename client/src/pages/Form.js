@@ -13,8 +13,9 @@ import Auth from "../utils/auth";
 
 const Form = () => {
   // If there is no `userId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
-  const { loading, data } = useQuery(QUERY_ME);
+  const { loading, me } = useQuery(QUERY_ME);
   const userManager = useUser();
+  console.log(me);
 
   if (loading) {
     return <div>Loading...</div>;
