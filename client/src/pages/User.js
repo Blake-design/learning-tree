@@ -46,7 +46,7 @@ const User = () => {
     <div>
       <Header />
         <div id="user-tree"> 
-          <h1>{user.userName}'s Tree</h1>
+          {userParam ? <h1>{user.userName}'s Tree</h1> : <h1>My Tree</h1>}
           <OrgChartTree />
         </div>
       {/* <h2 className="card-header">
