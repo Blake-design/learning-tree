@@ -13,20 +13,21 @@ import { useUser } from "../utils/UserContext";
 import Auth from "../utils/auth";
 
 const User = () => {
-  // const { userId } = useParams();
-  const { userId } = useParams();
-  // If there is no `userId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
-  const { loading, data } = useQuery(QUERY_ME);
+  const { userName: userParam } = useParams();
+
+  const { loading, data } = useQuery(userParam ? QUERY_SINGLE_USER : QUERY_ME, {
+    variables: { userName: userParam },
+  });
   const userManager = useUser();
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
   const user = data?.me || data?.user || {};
-  console.log(userId);
+
   console.log(data);
 
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours
-  // if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
-  //   return <Navigate to="/me" />;
-  // }
+  if (Auth.loggedIn() && Auth.getUser().data.userName === userParam) {
+    return <Navigate to="/me" />;
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -45,6 +46,8 @@ const User = () => {
     <div>
       <Header />
       <OrgChartTree />
+
+      <h1>{userManager.user.username}</h1>
       {/* <h2 className="card-header">
         {userId ? `${user.name}'s` : "Your"} friends have endorsed these
         sparks...

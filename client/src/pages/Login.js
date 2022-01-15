@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import { useUser } from "../utils/UserContext";
 import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
@@ -30,14 +30,13 @@ const Login = (props) => {
     event.preventDefault();
     await userManager.handleSigin(formState);
 
-    console.log("this is the user state ", userManager.user);
     // clear form values
     setFormState({
       email: "",
       password: "",
     });
   };
-
+  console.log("this is the user state ", userManager.user.user);
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
