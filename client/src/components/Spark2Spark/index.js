@@ -36,6 +36,7 @@ const Spark2Spark = ({ userId }) => {
       // Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
+      console.log({ ...formState });
     }
   };
 
