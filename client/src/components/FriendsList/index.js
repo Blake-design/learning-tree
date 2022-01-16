@@ -37,12 +37,10 @@ const FriendsList = ({ user }) => {
     });
   };
 
-  // if (!user.friends.length) {
-  //   return <h3>No Friends Yet</h3>;
-  // }
   return (
     <div>
       <h3>Friends List</h3>
+      <p> you are currently following {user.friends.length} friends</p>
       <form onSubmit={handleFormSubmit}>
         <input
           className="form-input"
