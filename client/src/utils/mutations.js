@@ -87,10 +87,8 @@ export const REMOVE_SPARK = gql`
 export const ADD_FRIEND = gql`
   mutation addFriend($userName: String!) {
     addFriend(userName: $userName) {
-      user {
-        friends {
-          _id
-        }
+      friends {
+        _id
       }
     }
   }

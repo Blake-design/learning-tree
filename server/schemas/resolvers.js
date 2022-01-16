@@ -123,14 +123,14 @@ const resolvers = {
     addFriend: async (parent, { userName }, context) => {
       console.log("we hit the function");
       if (context.user) {
-        const friend = await User.findOne({ userName });
-        console.log("we found current user");
+        const friend = await User.findOne({ userName: userName });
+        console.log("we found the friends account");
         await User.findOneAndUpdate(
-          { username: context.user.userName },
+          { userName: context.user.userName },
           { $push: { friends: friend } },
           { new: true }
         );
-        console.log("find one and update ran ");
+        console.log("we updated your account ");
 
         return friend;
       }
