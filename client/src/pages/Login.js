@@ -39,53 +39,49 @@ const Login = (props) => {
   };
   console.log("this is the user state ", userManager.user.user);
   return (
-    <main>
-      <div className="form-container">
-        <div className="form-card">
-          <h4>Login</h4>
-          <div>
-            {Object.keys(userManager.user).length ? (
-              <p>
-                Welcome {userManager.user.user.userName}! You may now head{" "}
-                <Navigate to="/me">to your dashboard.</Navigate>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  // className="btn btn-block btn-info"
-                  style={{ cursor: "pointer" }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
+    <div className="form-container">
+      <div className="form-card">
+        <h3>Log In</h3>
+        {Object.keys(userManager.user).length ? (
+          <p>
+            Welcome {userManager.user.user.userName}! You may now head{" "}
+            <Navigate to="/me">to your dashboard.</Navigate>
+          </p>
+        ) : (
+          <form onSubmit={handleFormSubmit}>
+            <input
+              className="form-input"
+              placeholder="EMAIL"
+              name="email"
+              type="email"
+              value={formState.email}
+              onChange={handleChange}
+            />
+            <input
+              className="form-input"
+              placeholder="PASSWORD"
+              name="password"
+              type="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+            <button
+              // className="btn btn-block btn-info"
+              style={{ cursor: "pointer" }}
+              type="submit"
+            >
+              SUBMIT
+            </button>
+          </form>
+        )}
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
+        {error && (
+          <div className="my-3 p-3 bg-danger text-white">
+            {error.message}
           </div>
-        </div>
+        )}
       </div>
-    </main>
+    </div>
   );
 };
 

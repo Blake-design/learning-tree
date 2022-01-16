@@ -45,7 +45,9 @@ const User = () => {
       <Header />
       <div id="user-tree">
         {userParam ? <h1>{user.userName}'s Tree</h1> : <h1>My Tree</h1>}
-        <OrgChartTree />
+        {/* <OrgChartTree /> */}
+        <OrgChartTree user={user.userName}/>
+        {/* <OrgChartTree user={userParam}/> */}
         {/* <FriendsList user={user} /> */}
       </div>
     </div>
