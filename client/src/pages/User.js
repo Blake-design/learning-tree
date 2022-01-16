@@ -3,8 +3,7 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-// import SparkList from "../components/SparkList";
-// import FocusForm from "../components/FocusForm";
+import FriendsList from "../components/FriendsList";
 import OrgChartTree from "../components/Tree";
 import Header from "../components/Header";
 
@@ -19,7 +18,7 @@ const User = () => {
     variables: { userName: userParam },
   });
   const userManager = useUser();
-  console.log(data);
+
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
   const user = data?.me || data?.user || {};
 
@@ -47,6 +46,7 @@ const User = () => {
       <div id="user-tree">
         {userParam ? <h1>{user.userName}'s Tree</h1> : <h1>My Tree</h1>}
         {/* <OrgChartTree /> */}
+        <FriendsList user={user} />
       </div>
     </div>
   );

@@ -62,7 +62,7 @@ const resolvers = {
 
     removeUser: async (parent, args, context) => {
       if (context.user) {
-        return User.findOneAndDelete({ _id: context.user.userName });
+        return User.findOneAndDelete({ userName: context.user.userName });
       }
       throw new AuthenticationError("Please log in");
     },
@@ -91,19 +91,18 @@ const resolvers = {
       { parentTitle, title, description },
       context
     ) => {
-      console.log("we hit the function");
       if (context.user) {
         const spark = await Spark.create({
           userName: context.user.userName,
           title,
           description,
         });
-        console.log("create was ran");
+
         await Spark.findOneAndUpdate(
           { title: parentTitle },
           { $push: { sparks: spark } }
         );
-        console.log("find on and update ran ");
+
         return spark;
       }
       throw new AuthenticationError("You need to be logged in!");
@@ -122,14 +121,18 @@ const resolvers = {
     },
 
     addFriend: async (parent, { userName }, context) => {
+      console.log("we hit the function");
       if (context.user) {
-        const friend = await User.findOne({ userName: userName });
+        const friend = await User.findOne({ userName });
+        console.log("we found current user");
         await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $push: { friends: friend } }
+          { username: context.user.userName },
+          { $push: { friends: friend } },
+          { new: true }
         );
+        console.log("find one and update ran ");
 
-        return thought;
+        return friend;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -138,8 +141,7 @@ const resolvers = {
         const friend = await User.findOneDelete({ userName: userName });
         User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { friends: { _id: friend } } },
-          { new: true }
+          { $pull: { friends: { _id: friend } } }
         );
       }
       throw new AuthenticationError("Please log in");

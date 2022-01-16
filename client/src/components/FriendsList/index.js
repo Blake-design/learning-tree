@@ -1,39 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { ADD_FRIEND } from "../../utils/mutations";
 
-const FriendsList = ({ users, title }) => {
-  if (!users.length) {
-    return <h3>No Friends Yet</h3>;
-  }
+const FriendsList = ({ user }) => {
+  const [formState, setFormState] = useState({
+    userName: "",
+  });
 
+  const [addFriend, { error, data }] = useMutation(ADD_FRIEND);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log({ ...formState });
+    try {
+      const { data } = await addFriend({
+        variables: { ...formState },
+      });
+
+      // Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
+    setFormState({
+      userName: "",
+    });
+  };
+
+  // if (!user.friends.length) {
+  //   return <h3>No Friends Yet</h3>;
+  // }
   return (
     <div>
-      <h3 className="text-primary">{title}</h3>
-      <div className="flex-row justify-space-between my-4">
-        {users &&
-          users.map((user) => (
-            <div key={user._id} className="col-12 col-xl-6">
-              <div className="card mb-3">
-                <h4 className="card-header bg-dark text-light p-2 m-0">
-                  {user.username} <br />
-                  <span className="text-white" style={{ fontSize: "1rem" }}>
-                    currently has {user.focus ? user.focuses.length : 0} focal
-                    {user.focuses && user.focuses.length === 1
-                      ? " point"
-                      : " points"}
-                  </span>
-                </h4>
-
-                <Link
-                  className="btn btn-block btn-squared btn-light text-dark"
-                  to={`/users/${user._id}`}
-                >
-                  View and explore their neural pathways.
-                </Link>
-              </div>
-            </div>
-          ))}
-      </div>
+      <h3>Friends List</h3>
+      <form onSubmit={handleFormSubmit}>
+        <input
+          className="form-input"
+          placeholder="Please enter a username"
+          name="userName"
+          type="text"
+          value={formState.userName}
+          onChange={handleChange}
+        />
+        <button
+          className="btn btn-block btn-info"
+          style={{ cursor: "pointer" }}
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 };

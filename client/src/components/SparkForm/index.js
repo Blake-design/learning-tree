@@ -35,6 +35,10 @@ const SparkForm = ({ userId }) => {
     } catch (e) {
       console.error(e);
     }
+    setFormState({
+      title: "",
+      description: "",
+    });
   };
 
   return (
