@@ -52,7 +52,7 @@ const OrgChartTree = ({ user }) => {
   };
 
   const convertedD3Obj = {
-    name: data.me.sparks.title,
+    name: data.me.sparks[0].title,
     children: data.me.sparks.map((s) => createNode(s))
   };
 

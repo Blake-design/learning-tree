@@ -6,6 +6,7 @@ import { useUser } from "../utils/UserContext";
 import { Navigate } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
+import "../App.css"
 
 import Auth from "../utils/auth";
 
@@ -38,11 +39,11 @@ const Login = (props) => {
   };
   console.log("this is the user state ", userManager.user.user);
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
+    <main>
+      <div className="form-container">
+        <div className="form-card">
+          <h4>Login</h4>
+          <div>
             {Object.keys(userManager.user).length ? (
               <p>
                 Welcome {userManager.user.user.userName}! You may now head{" "}
@@ -67,7 +68,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-info"
+                  // className="btn btn-block btn-info"
                   style={{ cursor: "pointer" }}
                   type="submit"
                 >
