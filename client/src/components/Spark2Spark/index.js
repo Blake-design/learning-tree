@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 
 import { useMutation } from "@apollo/client";
-import { ADD_FOCUS } from "../../utils/mutations";
+import { ADD_SPARK_2_SPARK } from "../../utils/mutations";
 import { useUser } from "../../utils/UserContext";
-const FocusForm = () => {
+
+const Spark2Spark = ({ userId }) => {
   const [formState, setFormState] = useState({
+    parentTitle: "",
     title: "",
     description: "",
   });
   const userManager = useUser();
-  const [addFocus, { error, data }] = useMutation(ADD_FOCUS);
+
+  const [addSpark2Spark, { error, data }] = useMutation(ADD_SPARK_2_SPARK);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -26,23 +29,31 @@ const FocusForm = () => {
     event.preventDefault();
 
     try {
-      const { data } = await addFocus({
+      const { data } = await addSpark2Spark({
         variables: { ...formState },
       });
 
       // Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
+      console.log({ ...formState });
     }
   };
 
   return (
     <div>
       <h2 className="card-header">
-        Welcome {userManager.user.userName} to begin you your map you need to
-        pick a Focus of study.
+        Great job {userManager.user.userName}! please enter sparks here.
       </h2>
       <form onSubmit={handleFormSubmit}>
+        <input
+          className="form-input"
+          placeholder="Please enter parent"
+          name="parentTitle"
+          type="text"
+          value={formState.parentTitle}
+          onChange={handleChange}
+        />
         <input
           className="form-input"
           placeholder="Please enter a title"
@@ -72,4 +83,4 @@ const FocusForm = () => {
   );
 };
 
-export default FocusForm;
+export default Spark2Spark;

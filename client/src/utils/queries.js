@@ -18,7 +18,10 @@ export const QUERY_SINGLE_USER = gql`
       firstName
       lastName
       userName
-      focuses {
+      sparks {
+        _id
+      }
+      friends {
         _id
       }
     }
@@ -30,26 +33,24 @@ export const QUERY_ME = gql`
     me {
       _id
       userName
-      focuses {
+      sparks {
+        _id
+      }
+      friends {
         _id
       }
     }
   }
 `;
 
-export const QUERY_FOCUS = gql`
-  query focus($userName: String!) {
-    focus(userName: $userName) {
-      _id
-      title
-    }
-  }
-`;
 export const QUERY_SPARKS = gql`
   query sparks($userName: String!) {
     sparks(userName: $userName) {
       _id
       title
+      sparks {
+        _id
+      }
     }
   }
 `;

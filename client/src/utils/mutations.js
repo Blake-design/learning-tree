@@ -50,7 +50,25 @@ export const REMOVE_USER = gql`
 export const ADD_SPARK = gql`
   mutation addSpark($title: String!, $description: String!) {
     addSpark(title: $title, description: $description) {
-      token
+      spark {
+        _id
+        title
+        description
+      }
+    }
+  }
+`;
+export const ADD_SPARK_2_SPARK = gql`
+  mutation addSpark2Spark(
+    $parentTitle: String!
+    $title: String!
+    $description: String!
+  ) {
+    addSpark2Spark(
+      parentTitle: $parentTitle
+      title: $title
+      description: $description
+    ) {
       spark {
         _id
         title
@@ -62,7 +80,6 @@ export const ADD_SPARK = gql`
 export const REMOVE_SPARK = gql`
   mutation removeSpark($sparkId: String!) {
     removeSpark(sparkId: $sparkId) {
-      token
       spark {
         _id
         title
@@ -85,7 +102,6 @@ export const ADD_FOCUS = gql`
 export const REMOVE_FOCUS = gql`
   mutation removeFocus($focusId: String!) {
     removeFocus(focusId: $focusId) {
-      token
       focus {
         _id
         title
@@ -108,7 +124,6 @@ export const ADD_FRIEND = gql`
       userName: $userName
       email: $email
     ) {
-      token
       friend {
         _id
         firstName
@@ -121,7 +136,6 @@ export const ADD_FRIEND = gql`
 export const REMOVE_FRIEND = gql`
   mutation removeFriend($friendId: String!) {
     removeFriend(focusId: $focusId) {
-      token
       friend {
         _id
         firstName

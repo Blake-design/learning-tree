@@ -30,7 +30,7 @@ const UserSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  focuses: [
+  sparks: [
     {
       type: Schema.Types.ObjectId,
       ref: "Focus",

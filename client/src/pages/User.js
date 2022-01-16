@@ -7,7 +7,6 @@ import { useQuery } from "@apollo/client";
 // import FocusForm from "../components/FocusForm";
 import OrgChartTree from "../components/Tree";
 import Header from "../components/Header";
-import InfoModel from "../components/InfoModel";
 
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 import { useUser } from "../utils/UserContext";
@@ -48,7 +47,6 @@ const User = () => {
       <div id="user-tree">
         {userParam ? <h1>{user.userName}'s Tree</h1> : <h1>My Tree</h1>}
         {/* <OrgChartTree /> */}
-        <InfoModel user={user} />
       </div>
     </div>
   );

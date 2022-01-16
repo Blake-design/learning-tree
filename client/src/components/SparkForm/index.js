@@ -10,7 +10,7 @@ const SparkForm = ({ userId }) => {
     description: "",
   });
   const userManager = useUser();
-  const [addSpark, { error, data }] = useMutation(ADD_SPARK);
+  const [addSpark, { error1, data1 }] = useMutation(ADD_SPARK);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -27,7 +27,7 @@ const SparkForm = ({ userId }) => {
     event.preventDefault();
 
     try {
-      const { data } = await addSpark({
+      const { data1 } = await addSpark({
         variables: { ...formState },
       });
 
