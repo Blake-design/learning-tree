@@ -103,6 +103,13 @@ button {
   /* align-content: center; */
   width: 50vw;
   height: 100vh;
+
+}
+
+.form-card {
+  padding: 75px;
+  border: 1px solid rgb(216, 216, 216);
+  border-radius: 20px;
 }
 
 .form-card h3 {
