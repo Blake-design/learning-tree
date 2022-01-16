@@ -38,6 +38,11 @@ const Spark2Spark = ({ userId }) => {
       console.error(e);
       console.log({ ...formState });
     }
+    setFormState({
+      parentTitle: "",
+      title: "",
+      description: "",
+    });
   };
 
   return (

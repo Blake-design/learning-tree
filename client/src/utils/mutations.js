@@ -50,10 +50,9 @@ export const REMOVE_USER = gql`
 export const ADD_SPARK = gql`
   mutation addSpark($title: String!, $description: String!) {
     addSpark(title: $title, description: $description) {
-      spark {
+      sparks {
         _id
         title
-        description
       }
     }
   }
@@ -69,10 +68,8 @@ export const ADD_SPARK_2_SPARK = gql`
       title: $title
       description: $description
     ) {
-      spark {
+      sparks {
         _id
-        title
-        description
       }
     }
   }
@@ -80,67 +77,27 @@ export const ADD_SPARK_2_SPARK = gql`
 export const REMOVE_SPARK = gql`
   mutation removeSpark($sparkId: String!) {
     removeSpark(sparkId: $sparkId) {
-      spark {
+      sparks {
         _id
-        title
-        description
-      }
-    }
-  }
-`;
-export const ADD_FOCUS = gql`
-  mutation addFocus($title: String!, $description: String!) {
-    addFocus(title: $title, description: $description) {
-      focus {
-        _id
-        title
-        description
-      }
-    }
-  }
-`;
-export const REMOVE_FOCUS = gql`
-  mutation removeFocus($focusId: String!) {
-    removeFocus(focusId: $focusId) {
-      focus {
-        _id
-        title
-        description
       }
     }
   }
 `;
 
 export const ADD_FRIEND = gql`
-  mutation addFriend(
-    $firstName: String!
-    $lastName: String!
-    $userName: String!
-    $email: String!
-  ) {
-    addFriend(
-      firstName: $firstName
-      lastName: $lastName
-      userName: $userName
-      email: $email
-    ) {
-      friend {
+  mutation addFriend($userName: String!) {
+    addFriend(userName: $userName) {
+      friends {
         _id
-        firstName
-        lastName
-        userName
       }
     }
   }
 `;
 export const REMOVE_FRIEND = gql`
-  mutation removeFriend($friendId: String!) {
-    removeFriend(focusId: $focusId) {
-      friend {
+  mutation removeFriend($userName: String!) {
+    removeFriend(userName: $userName) {
+      friends {
         _id
-        firstName
-        lastName
-        userName
       }
     }
   }

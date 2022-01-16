@@ -21,7 +21,6 @@ const typeDefs = gql`
   type Auth {
     token: ID!
     user: User!
-    spark: Spark!
   }
 
   type Query {
@@ -40,22 +39,16 @@ const typeDefs = gql`
       password: String!
     ): Auth
 
-    addSpark(_id: ID, title: String!, description: String!): Auth
+    addSpark(title: String!, description: String!): Spark
 
     addSpark2Spark(
-      _id: ID
       parentTitle: String!
       title: String!
       description: String!
-    ): Auth
+    ): Spark
 
-    addFriend(
-      _id: ID
-      firstName: String!
-      lastName: String!
-      userName: String!
-      email: String!
-    ): Auth
+    addFriend(userName: String!): User
+
     login(email: String!, password: String!): Auth
 
     removeUser: User
