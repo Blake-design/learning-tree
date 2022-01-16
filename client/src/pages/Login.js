@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // Import our action
 
 import { useUser } from "../utils/UserContext";
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 
@@ -46,7 +46,7 @@ const Login = (props) => {
             {Object.keys(userManager.user).length ? (
               <p>
                 Welcome {userManager.user.user.userName}! You may now head{" "}
-                <Link to="/me">to your dashboard.</Link>
+                <Navigate to="/me">to your dashboard.</Navigate>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
