@@ -44,9 +44,10 @@ const SparkForm = ({ userId }) => {
 
   return (
     <div className="form-card">
-      <h2 className="card-header">
-        Great job {userManager.user.userName}! please enter sparks here.
-      </h2>
+      <h4 className="card-header">
+        {/* Great job {userManager.user.userName}! please enter sparks here. */}
+        Create a new spark.
+      </h4>
       <form onSubmit={handleFormSubmit}>
         <input
           className="form-input"

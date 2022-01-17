@@ -119,6 +119,13 @@ button {
   margin-bottom: 30px;
 }
 
+.form-card h4 {
+  font-weight: 100;
+  font-size: 20pt;
+  color: #923fc0;
+  margin-bottom: 30px;
+}
+
 .form-input {
   display: block;
   width: 100%;
