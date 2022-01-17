@@ -114,6 +114,7 @@ button {
   padding: 75px;
   border: 1px solid rgb(216, 216, 216);
   border-radius: 20px;
+  background-color: white;
 }
 
 .form-card h3 {

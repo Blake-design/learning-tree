@@ -6,11 +6,21 @@ import { useUser } from "../utils/UserContext";
 import { Navigate } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
-import "../App.css"
+
+import "../App.css";
+import Particles from "react-tsparticles";
+import particlesConfig from "../config/configParticles.js";
 
 import Auth from "../utils/auth";
 
 const Login = (props) => {
+  const particlesInit = (main) => {
+    console.log(main);
+  };
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
+  
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -40,6 +50,9 @@ const Login = (props) => {
   console.log("this is the user state ", userManager.user.user);
   return (
     <div className="form-container">
+      <div className="tsparticles" style={{ position: 'absolute'}}>
+        <Particles height="100vh" width="100vw" init={particlesInit} loaded={particlesLoaded} options={particlesConfig} />
+      </div>
       <div className="form-card">
         <h3>Log In</h3>
         {Object.keys(userManager.user).length ? (
