@@ -53,6 +53,10 @@ html, body {
   font-family: 'Barlow', sans-serif;
 }
 
+.tsparticles {
+  z-index: -999;
+}
+
 #splash {
   padding: 200px;
   margin: 0 auto;
@@ -110,11 +114,19 @@ button {
   padding: 75px;
   border: 1px solid rgb(216, 216, 216);
   border-radius: 20px;
+  background-color: white;
 }
 
 .form-card h3 {
   font-weight: 400;
   font-size: 40pt;
+  color: #923fc0;
+  margin-bottom: 30px;
+}
+
+.form-card h4 {
+  font-weight: 100;
+  font-size: 20pt;
   color: #923fc0;
   margin-bottom: 30px;
 }

@@ -46,10 +46,11 @@ const Spark2Spark = ({ userId }) => {
   };
 
   return (
-    <div>
-      <h2 className="card-header">
-        Great job {userManager.user.userName}! please enter sparks here.
-      </h2>
+    <div className="form-card">
+      <h4 className="create-header">
+        {/* Great job {userManager.user.userName}! please enter sparks here. */}
+        Add on to your sparks.
+      </h4>
       <form onSubmit={handleFormSubmit}>
         <input
           className="form-input"
@@ -81,7 +82,7 @@ const Spark2Spark = ({ userId }) => {
           style={{ cursor: "pointer" }}
           type="submit"
         >
-          Submit
+          SUBMIT
         </button>
       </form>
     </div>

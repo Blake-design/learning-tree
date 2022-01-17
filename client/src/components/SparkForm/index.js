@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_SPARK } from "../../utils/mutations";
 import { useUser } from "../../utils/UserContext";
+import "../../App.css"
 
 const SparkForm = ({ userId }) => {
   const [formState, setFormState] = useState({
@@ -42,10 +43,11 @@ const SparkForm = ({ userId }) => {
   };
 
   return (
-    <div>
-      <h2 className="card-header">
-        Great job {userManager.user.userName}! please enter sparks here.
-      </h2>
+    <div className="form-card">
+      <h4 className="card-header">
+        {/* Great job {userManager.user.userName}! please enter sparks here. */}
+        Create a new spark.
+      </h4>
       <form onSubmit={handleFormSubmit}>
         <input
           className="form-input"
@@ -69,7 +71,7 @@ const SparkForm = ({ userId }) => {
           style={{ cursor: "pointer" }}
           type="submit"
         >
-          Submit
+          SUBMIT
         </button>
       </form>
     </div>

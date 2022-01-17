@@ -3,11 +3,21 @@ import { Navigate } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
-import "../App.css"
+
+import "../App.css";
+import Particles from "react-tsparticles";
+import particlesConfig from "../config/configParticles.js";
 
 import Auth from "../utils/auth";
 
 const Signup = () => {
+  const particlesInit = (main) => {
+    console.log(main);
+  };
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
+
   const [formState, setFormState] = useState({
     firstName: "",
     lastName: "",
@@ -53,6 +63,9 @@ const Signup = () => {
 
   return (
     <div className="form-container">
+      <div className="tsparticles" style={{ position: 'absolute'}}>
+        <Particles height="100vh" width="100vw" init={particlesInit} loaded={particlesLoaded} options={particlesConfig} />
+      </div>
       <div className="form-card">
         <h3>Sign Up</h3>
           {data ? (
