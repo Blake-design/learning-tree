@@ -1,6 +1,7 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { query } = require("express");
-const { User, Spark } = require("../models");
+const { user } = require("../config/connection");
+const { User } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -70,17 +71,18 @@ const resolvers = {
     addSpark: async (parent, { title, description }, context) => {
       console.log("we hit the function");
       if (context.user) {
-        const spark = await Spark.create({
-          userName: context.user.userName,
+        const spark = {
           title,
           description,
-        });
-        console.log("create was ran");
+        };
+        console.log(" obj assign was ran");
         await User.findOneAndUpdate(
           { userName: context.user.userName },
           { $push: { sparks: spark } }
         );
-        console.log("find on and update ran ");
+        console.log("find and update ran ");
+        await User.save();
+        console.log("document saved ");
         return spark;
       }
       throw new AuthenticationError("You need to be logged in!");
@@ -92,30 +94,52 @@ const resolvers = {
       context
     ) => {
       if (context.user) {
-        const spark = await Spark.create({
-          userName: context.user.userName,
+        const childSpark = {
           title,
           description,
-        });
+        };
 
-        await Spark.findOneAndUpdate(
-          { title: parentTitle },
-          { $push: { sparks: spark } }
-        );
-
-        return spark;
+        function findParent(spark) {
+          if ((spark.title = parentTitle)) {
+            spark.push(childSpark);
+          } else
+            spark.map((spark) => {
+              findParent(spark);
+            });
+        }
+        try {
+          user.sparks.map((spark) => {
+            findParent(spark);
+          });
+        } catch (error) {
+          console.error("could not find parent");
+        }
+        await User.save();
+        return User;
       }
+
       throw new AuthenticationError("You need to be logged in!");
     },
 
     removeSpark: async (parent, { title }, context) => {
       if (context.user) {
-        const sparkId = await Spark.findOneAndDelete({ title: title });
-        await User.findOneAndUpdate(
-          { userName: context.user.userName },
-          { $pull: { sparks: { _id: sparkId } } },
-          { new: true }
-        );
+        function findParent(spark) {
+          if ((spark.title = title)) {
+            spark.remove();
+          } else
+            spark.map((s) => {
+              findParent(s);
+            });
+        }
+        try {
+          user.sparks.map((spark) => {
+            findParent(spark);
+          });
+        } catch (error) {
+          console.error("could not find parent");
+        }
+        await User.save();
+        return User;
       }
       throw new AuthenticationError("Please log in");
     },
@@ -138,7 +162,7 @@ const resolvers = {
     },
     removeFriend: async (parent, { userName }, context) => {
       if (context.user) {
-        const friend = await User.findOneDelete({ userName: userName });
+        const friend = await User.findOne({ userName: userName });
         User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { friends: { _id: friend } } }

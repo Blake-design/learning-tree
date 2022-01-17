@@ -1,6 +1,20 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
+const sparkSchema = new Schema({
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  description: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  sparks: [this],
+});
+
 const UserSchema = new Schema({
   firstName: {
     type: String,
@@ -30,12 +44,7 @@ const UserSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  sparks: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Focus",
-    },
-  ],
+  sparks: [sparkSchema],
   friends: [
     {
       type: Schema.Types.ObjectId,

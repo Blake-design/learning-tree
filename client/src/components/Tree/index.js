@@ -44,37 +44,26 @@ const orgChart = {
 };
 
 const OrgChartTree = ({ user }) => {
-  const { loading, data } = useQuery(QUERY_SPARKS);
+  const convertedD3Obj = {
+    name: user.sparks[0].title,
+    children: user.sparks.map((s) => createNode(s)),
+  };
 
-  console.log(data);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (user.sparks.length) {
-    const convertedD3Obj = {
-      name: user.sparks[0].title,
-      children: user.sparks.map((s) => createNode(s)),
+  function createNode(spark) {
+    const newNode = {
+      name: spark.title,
+      attributes: { Description: spark.description },
     };
-
-    function createNode(spark) {
-      const newNode = {
-        name: spark.title,
-        attributes: { description: spark.description },
-      };
-      if (spark.sparks) {
-        newNode.children = spark.sparks.map((s) => createNode(s));
-      }
-      return newNode;
+    if (spark.sparks) {
+      newNode.children = spark.sparks.map((s) => createNode(s));
     }
-    console.log(convertedD3Obj);
+    return newNode;
   }
-
+  console.log(convertedD3Obj);
   return (
     <div id="treeWrapper" style={{ width: "50em", height: "20em" }}>
       {user.sparks.length ? (
-        <Tree data={orgChart} />
+        <Tree data={convertedD3Obj} />
       ) : (
         <div> you currently have no data</div>
       )}
