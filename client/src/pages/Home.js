@@ -26,14 +26,19 @@ const Home = () => {
   };
 
   return (
-    <div className="particles-container" style={{ position: 'relative', overflow: "hidden" }}>
+    // <div className="particles-container vert-center" style={{ position: 'relative', overflow: "hidden" }}>
+    <div className="particles-container vert-center">
+
       <div id="splash">
         <h1>Synapse</h1>
         {/* <h3>Pathways to Learning</h3> */}
         <p>Every step begins with a spark.</p>
-        <button onClick={() => navigate("/login")}>LOG IN</button>
-        <button onClick={() => navigate("/signup")}>SIGN UP</button>
+        <div>
+          <button onClick={() => navigate("/login")}>LOG IN</button>
+          <button onClick={() => navigate("/signup")}>SIGN UP</button>
+        </div>
       </div>
+
       <div className="tsparticles" style={{ position: 'absolute'}}>
         <Particles height="100vh" width="100vw" init={particlesInit} loaded={particlesLoaded} options={particlesConfig} />
       </div>

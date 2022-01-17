@@ -53,18 +53,30 @@ html, body {
   font-family: 'Barlow', sans-serif;
 }
 
-.tsparticles {
-  z-index: -999;
+.vert-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 }
 
 #splash {
-  padding: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40vw;
+  height: 40vh;
+  /* padding: 100px; */
+  /* position: relative; */
+  margin-top: 80px;
+  /* margin-top: 10%; */
   margin: 0 auto;
   text-align: center;
+  background-color: white;
 }
 
 #splash h1 {
-  font-size: 90pt;
+  font-size: 45pt;
 }
 
 #splash h3 {
@@ -73,8 +85,12 @@ html, body {
 
 #splash p {
   margin-top: 50px;
-  font-size: 40pt;
+  font-size: 20pt;
   font-weight: 100;
+}
+
+.tsparticles {
+  z-index: -999;
 }
 
 button {
