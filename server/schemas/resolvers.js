@@ -15,8 +15,13 @@ const resolvers = {
     },
 
     me: async (parent, args, context) => {
+      console.log("this function was hit");
       if (context.user) {
-        return User.findOne({ userName: context.user.userName });
+        const user = await User.findOne({
+          userName: context.user.userName,
+        }).lean();
+        console.log(user);
+        return { jsonString: JSON.stringify(user) };
       }
       throw new AuthenticationError("Please log in to view your profile.");
     },
@@ -94,28 +99,31 @@ const resolvers = {
       context
     ) => {
       if (context.user) {
-        const childSpark = {
+        var childSpark = {
           title,
           description,
         };
 
         function findParent(spark) {
-          if ((spark.title = parentTitle)) {
+          if (spark.title === parentTitle) {
             spark.push(childSpark);
           } else
             spark.map((spark) => {
               findParent(spark);
             });
         }
+        const user = User.findOne({
+          userName: context.user.userName,
+        });
         try {
           user.sparks.map((spark) => {
             findParent(spark);
           });
+          await user.findOneUpdate({ userName: context.user.userName }, user);
+          return user;
         } catch (error) {
           console.error("could not find parent");
         }
-        await User.save();
-        return User;
       }
 
       throw new AuthenticationError("You need to be logged in!");

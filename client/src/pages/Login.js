@@ -6,7 +6,7 @@ import { useUser } from "../utils/UserContext";
 import { Navigate } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
-import "../App.css"
+import "../App.css";
 
 import Auth from "../utils/auth";
 
@@ -29,7 +29,7 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    await userManager.handleSigin(formState);
+    await userManager.handleSignIn(formState);
 
     // clear form values
     setFormState({
@@ -76,9 +76,7 @@ const Login = (props) => {
         )}
 
         {error && (
-          <div className="my-3 p-3 bg-danger text-white">
-            {error.message}
-          </div>
+          <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
         )}
       </div>
     </div>

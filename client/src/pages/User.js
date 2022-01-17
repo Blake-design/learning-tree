@@ -20,8 +20,9 @@ const User = () => {
   const userManager = useUser();
 
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
-  const user = data?.me || data?.user || {};
-  console.log(user.sparks);
+  const user = JSON.parse(data.me.jsonString);
+  console.log(user);
+
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data.userName === userParam) {
     return <Navigate to="/me" />;
@@ -31,7 +32,7 @@ const User = () => {
     return <div>Loading...</div>;
   }
 
-  if (!user) {
+  if (user == undefined) {
     return (
       <h4>
         You need to be logged in to see your profile page. Use the navigation

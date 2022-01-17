@@ -23,10 +23,14 @@ const typeDefs = gql`
     user: User!
   }
 
+  type JSONobject {
+    jsonString: String
+  }
+
   type Query {
     users: [User]!
     user(userName: String!): User
-    me: User
+    me: JSONobject
     sparks: [Spark]
   }
 

@@ -45,7 +45,7 @@ const orgChart = {
 
 const OrgChartTree = ({ user }) => {
   const convertedD3Obj = {
-    name: user.sparks[0].title,
+    name: user.sparks.title,
     children: user.sparks.map((s) => createNode(s)),
   };
 
@@ -59,7 +59,7 @@ const OrgChartTree = ({ user }) => {
     }
     return newNode;
   }
-  console.log(convertedD3Obj);
+  // console.log(convertedD3Obj);
   return (
     <div id="treeWrapper" style={{ width: "50em", height: "20em" }}>
       {user.sparks.length ? (

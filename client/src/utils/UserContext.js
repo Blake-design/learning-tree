@@ -18,7 +18,7 @@ function useProvideUser() {
   const [user, setUser] = useState({});
   const [login] = useMutation(LOGIN_USER);
 
-  const handleSigin = async (formState) => {
+  const handleSignIn = async (formState) => {
     try {
       const { data } = await login({
         variables: { ...formState },
@@ -34,7 +34,7 @@ function useProvideUser() {
 
   return {
     user,
-    handleSigin,
+    handleSignIn,
   };
 }
 
