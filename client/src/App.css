@@ -53,6 +53,10 @@ html, body {
   font-family: 'Barlow', sans-serif;
 }
 
+.tsparticles {
+  z-index: -999;
+}
+
 #splash {
   padding: 200px;
   margin: 0 auto;
