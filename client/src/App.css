@@ -64,19 +64,35 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 40vw;
-  height: 40vh;
+  width: 30vw;
+  height: 30vh;
   /* padding: 100px; */
   /* position: relative; */
-  margin-top: 80px;
+  /* margin-top: 80px; */
   /* margin-top: 10%; */
   margin: 0 auto;
   text-align: center;
   background-color: white;
 }
 
+#splash img {
+  display: inline;
+  position: relative;
+  top: 15px;
+  height: 75px;
+  width: 75px;
+  margin-right: 15px;
+}
+
 #splash h1 {
+  display: inline;
   font-size: 45pt;
+}
+
+#splash hr {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 45px;
 }
 
 #splash h3 {
@@ -84,9 +100,10 @@ html, body {
 }
 
 #splash p {
-  margin-top: 50px;
+  margin-top: 45px;
   font-size: 20pt;
   font-weight: 100;
+  color: #4174ff;
 }
 
 .tsparticles {
@@ -112,7 +129,7 @@ button {
 }
 
 #splash button {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .form-container {

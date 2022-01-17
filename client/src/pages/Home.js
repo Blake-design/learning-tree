@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import "../App.css";
 import Particles from "react-tsparticles";
 import particlesConfig from "../config/configParticles.js";
+import synapseLogo from "../assets/synapselogo-01.png";
 
 
 import FriendsList from "../components/FriendsList";
@@ -29,8 +30,15 @@ const Home = () => {
     // <div className="particles-container vert-center" style={{ position: 'relative', overflow: "hidden" }}>
     <div className="particles-container vert-center">
 
+      <div className="tsparticles" style={{ position: 'absolute'}}>
+        <Particles height="100vh" width="100vw" init={particlesInit} loaded={particlesLoaded} options={particlesConfig} />
+      </div>
       <div id="splash">
-        <h1>Synapse</h1>
+        <div id="splashlogo">
+          <img src={synapseLogo} alt="Synapse logo"/>
+          <h1>Synapse</h1>
+        </div>
+        <hr />
         {/* <h3>Pathways to Learning</h3> */}
         <p>Every step begins with a spark.</p>
         <div>
@@ -39,9 +47,6 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="tsparticles" style={{ position: 'absolute'}}>
-        <Particles height="100vh" width="100vw" init={particlesInit} loaded={particlesLoaded} options={particlesConfig} />
-      </div>
     </div>
   );
 };
