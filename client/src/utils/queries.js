@@ -35,8 +35,6 @@ export const QUERY_ME = gql`
       userName
       sparks {
         _id
-        # title
-        # description
       }
       friends {
         _id
@@ -49,8 +47,8 @@ export const QUERY_SPARKS = gql`
   query sparks($userName: String!) {
     sparks(userName: $userName) {
       _id
-      # title
-      # description
+      title
+      description
       sparks {
         _id
       }

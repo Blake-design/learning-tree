@@ -21,7 +21,7 @@ const User = () => {
 
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
   const user = data?.me || data?.user || {};
-
+  console.log(user);
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data.userName === userParam) {
     return <Navigate to="/me" />;
@@ -31,24 +31,24 @@ const User = () => {
     return <div>Loading...</div>;
   }
 
-  // if (!user?.name) {
-  //   return (
-  //     <h4>
-  //       You need to be logged in to see your profile page. Use the navigation
-  //       links above to sign up or log in!
-  //     </h4>
-  //   );
-  // }
+  if (!user) {
+    return (
+      <h4>
+        You need to be logged in to see your profile page. Use the navigation
+        links above to sign up or log in!
+      </h4>
+    );
+  }
 
   return (
     <div>
       <Header />
       <div id="user-tree">
         {userParam ? <h1>{user.userName}'s Tree</h1> : <h1>My Tree</h1>}
-        {/* <OrgChartTree /> */}
-        <OrgChartTree user={user.userName}/>
-        {/* <OrgChartTree user={userParam}/> */}
-        {/* <FriendsList user={user} /> */}
+
+        <OrgChartTree user={user} />
+
+        <FriendsList user={user} />
       </div>
     </div>
   );

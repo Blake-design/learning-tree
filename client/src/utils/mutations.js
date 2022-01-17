@@ -53,7 +53,7 @@ export const ADD_SPARK = gql`
       sparks {
         _id
         title
-        # description
+        description
       }
     }
   }
