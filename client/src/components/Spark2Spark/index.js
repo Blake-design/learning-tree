@@ -46,7 +46,7 @@ const Spark2Spark = ({ userId }) => {
   };
 
   return (
-    <div>
+    <div className="form-card">
       <h2 className="card-header">
         Great job {userManager.user.userName}! please enter sparks here.
       </h2>

@@ -25,13 +25,17 @@ const Form = () => {
   return (
     <div>
       <Header />
-      <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>
+      <div className="form-container">
+        <div><SparkForm /></div>
+        <div><Spark2Spark /></div>
+      </div>
+      {/* <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>
         <SparkForm />
       </div>
       <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>
-        <Spark2Spark />
-      </div>
-      <InfoModel user={user} />
+
+      </div> */}
+      {/* <InfoModel user={user} /> */}
     </div>
   );
 };
