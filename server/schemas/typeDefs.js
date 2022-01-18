@@ -23,11 +23,15 @@ const typeDefs = gql`
     user: User!
   }
 
+  type JSONobject {
+    jsonString: String
+  }
+
   type Query {
     users: [User]!
     user(userName: String!): User
-    me: User
-    sparks(userName: String!): [Spark]
+    me: JSONobject
+    sparks: [Spark]
   }
 
   type Mutation {
@@ -39,21 +43,20 @@ const typeDefs = gql`
       password: String!
     ): Auth
 
-    addSpark(title: String!, description: String!): Spark
+    addSpark(title: String!, description: String!): User
 
     addSpark2Spark(
       parentTitle: String!
       title: String!
       description: String!
-    ): Spark
-
+    ): User
     addFriend(userName: String!): User
 
     login(email: String!, password: String!): Auth
 
     removeUser: User
 
-    removeSpark(title: String!): Spark
+    removeSpark(title: String!): User
 
     removeFriend(userName: String!): User
   }

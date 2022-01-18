@@ -5,7 +5,7 @@
     "userName": "SmartyPants",
     "email": "bmccarty@synapse.dev",
     "password": "password01",
-    "focuses": [
+    "sparks": [
       {
         "title": "Web Development",
         "description": "Technologies for building the internet.",
@@ -64,8 +64,8 @@
     "lastName": "Sherrington",
     "userName": "IpwichBrainSwitch",
     "email": "csherrington@synapse.dev",
-    "password": "password02",
-    "focuses": [
+    "password": "password01",
+    "sparks": [
       {
         "title": "Physiology",
         "description": "A branch of biology that deals with the normal functions of living organisms and their parts.",
