@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../App.css";
 import Auth from "../../utils/auth";
 // import "./header.css";
+import synapseLogo from "../../assets/synapselogo-01.png";
 
 const Header = () => {
   const logout = (event) => {
@@ -45,67 +46,69 @@ const Header = () => {
     //     )}
     //   </div>
     // </header>
-
-    <nav className="navbar" role="navigation" aria-label="main navigation">
-  <div className="navbar-brand">
-    <a className="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
-    </a>
-
-    <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" className="navbar-menu">
-    <div className="navbar-start">
-      <a className="navbar-item">
-        Home
+<header>
+  <nav className="navbar" role="navigation" aria-label="main navigation">
+    <div className="navbar-brand">
+      <a className="navbar-item" href="https://bulma.io">
+        <img src={synapseLogo} width="40" height="40"/>
       </a>
 
-      <a className="navbar-item">
-        Documentation
+      <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </a>
+    </div>
 
-      <div className="navbar-item has-dropdown is-hoverable">
-        <a className="navbar-link">
-          More
+    <div id="navbarBasicExample" className="navbar-menu">
+      <div className="navbar-start">
+        <a>
+          Home
         </a>
 
-        <div className="navbar-dropdown">
-          <a className="navbar-item">
-            About
-          </a>
-          <a className="navbar-item">
-            Jobs
-          </a>
-          <a className="navbar-item">
-            Contact
-          </a>
-          <hr className="navbar-divider"/>
-          <a className="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
-    </div>
+        <a className="navbar-item">
+          Documentation
+        </a>
 
-    <div className="navbar-end">
-      <div className="navbar-item">
-        <div className="buttons">
-          <a className="button is-primary">
-            Create
+        {/* <div className="navbar-item has-dropdown is-hoverable">
+          <a className="navbar-link">
+            More
           </a>
-          <a className="button is-light" onClick={logout}>
-            Log Out
-          </a>
+
+          <div className="navbar-dropdown">
+            <a className="navbar-item">
+              About
+            </a>
+            <a className="navbar-item">
+              Jobs
+            </a>
+            <a className="navbar-item">
+              Contact
+            </a>
+            <hr className="navbar-divider"/>
+            <a className="navbar-item">
+              Report an issue
+            </a>
+          </div>
+        </div> */}
+      </div>
+
+      <div className="navbar-end">
+        <div className="navbar-item">
+          {/* <div className="buttons"> */}
+            <a className="header-btn" onClick={() => navigate("/create")}>
+              Create
+            </a>
+            <a className="header-btn" onClick={logout}>
+              Log Out
+            </a>
+          {/* </div> */}
         </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
+
   );
 };
 
