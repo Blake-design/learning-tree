@@ -1,4 +1,4 @@
-import React from "react";
+import Reac, { useState, useEffect } from "react";
 
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -14,15 +14,22 @@ import Auth from "../utils/auth";
 const User = () => {
   const { userName: userParam } = useParams();
 
-  const { loading, data } = useQuery(userParam ? QUERY_SINGLE_USER : QUERY_ME, {
-    variables: { userName: userParam },
-  });
+  const { loading, error, data } = useQuery(
+    userParam ? QUERY_SINGLE_USER : QUERY_ME,
+    {
+      variables: { userName: userParam },
+      // onCompleted: parseData,
+    }
+  );
   const userManager = useUser();
 
-  // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_USER` query
-  const user = JSON.parse(data.me.jsonString);
-  console.log(user);
+  let user;
 
+  console.log(userManager.user);
+  // console.log(user);
+  if (data) {
+    user = JSON.parse(data.me.jsonString);
+  }
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data.userName === userParam) {
     return <Navigate to="/me" />;
@@ -31,26 +38,23 @@ const User = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
-  if (user == undefined) {
-    return (
-      <h4>
-        You need to be logged in to see your profile page. Use the navigation
-        links above to sign up or log in!
-      </h4>
-    );
+  if (error) {
+    return <div> AHHHHHHHHHHHHHH.......</div>;
   }
 
   return (
     <div>
       <Header />
-      <div id="user-tree">
-        {userParam ? <h1>{user.userName}'s Tree</h1> : <h1>My Tree</h1>}
+      {userParam ? <h1>{user.userName}'s Tree</h1> : <h1>My Tree</h1>}
+      {user != undefined ? (
+        <div id="user-tree">
+          <OrgChartTree user={user} />
 
-        <OrgChartTree user={user} />
-
-        <FriendsList user={user} />
-      </div>
+          <FriendsList user={user} />
+        </div>
+      ) : (
+        <div>building graph...</div>
+      )}
     </div>
   );
 };
