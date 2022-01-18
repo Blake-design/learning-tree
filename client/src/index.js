@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
-// require("dotenv").config();
 
 ReactDOM.render(
   <React.StrictMode>
