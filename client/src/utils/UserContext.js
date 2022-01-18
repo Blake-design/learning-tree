@@ -11,7 +11,6 @@ function ProvideUser({ children }) {
 }
 
 function useUser() {
-  /// use context calls a function that will create the context
   return useContext(UserContext);
 }
 
@@ -26,7 +25,8 @@ function useProvideUser() {
       });
 
       Auth.login(data.login.token);
-      console.log("this is data return by login " + data);
+
+      setUser(data.login);
     } catch (e) {
       console.error(e);
     }

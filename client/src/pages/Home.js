@@ -18,12 +18,8 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-  const particlesInit = (main) => {
-    console.log(main);
-  };
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  const particlesInit = (main) => {};
+  const particlesLoaded = (container) => {};
 
   return (
     // <div className="particles-container vert-center" style={{ position: 'relative', overflow: "hidden" }}>

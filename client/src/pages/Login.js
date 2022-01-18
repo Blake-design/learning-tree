@@ -14,12 +14,8 @@ import particlesConfig from "../config/configParticles.js";
 import Auth from "../utils/auth";
 
 const Login = (props) => {
-  const particlesInit = (main) => {
-    console.log(main);
-  };
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  const particlesInit = (main) => {};
+  const particlesLoaded = (container) => {};
 
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
