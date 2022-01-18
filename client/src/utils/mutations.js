@@ -54,7 +54,6 @@ export const ADD_SPARK = gql`
         _id
         title
         description
-        sparks
       }
     }
   }

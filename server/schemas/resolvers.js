@@ -86,8 +86,8 @@ const resolvers = {
           { $push: { sparks: spark } }
         );
         console.log("find and update ran ");
-        await User.save();
-        console.log("document saved ");
+
+        console.log("success?");
         return spark;
       }
       throw new AuthenticationError("You need to be logged in!");

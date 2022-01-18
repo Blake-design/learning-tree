@@ -28,6 +28,12 @@ const Spark2Spark = ({ userId }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    // const spark = { ...formState };
+    // user.sparks.push(spark);
+    // console.log("Check to see if data changed " + user);
+
+    // JSON.stringify(user);
+
     try {
       const { data } = await addSpark2Spark({
         variables: { ...formState },
