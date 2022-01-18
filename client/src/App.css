@@ -316,4 +316,15 @@ footer button {
     width: 80vw;
     height: 65vh;
   }
+  
+  footer {
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  footer p {
+    display: block;
+    text-align: center;
+  }
 }
