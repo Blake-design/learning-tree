@@ -67,7 +67,7 @@ const Signup = () => {
         <Particles height="100vh" width="100vw" init={particlesInit} loaded={particlesLoaded} options={particlesConfig} />
       </div>
       <div className="form-card">
-        <h3>Sign Up</h3>
+        <h4>Sign Up</h4>
           {data ? (
             <p>
               Welcome {formState.userName} please login{" "}

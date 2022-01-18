@@ -60,7 +60,7 @@ const Login = (props) => {
         />
       </div>
       <div className="form-card">
-        <h3>Log In</h3>
+        <h4>Log In</h4>
         {Object.keys(userManager.user).length ? (
           <p>
             Welcome {userManager.user.user.userName}! You may now head{" "}

@@ -18,7 +18,6 @@ const User = () => {
     userParam ? QUERY_SINGLE_USER : QUERY_ME,
     {
       variables: { userName: userParam },
-      // onCompleted: parseData,
     }
   );
   const userManager = useUser();
