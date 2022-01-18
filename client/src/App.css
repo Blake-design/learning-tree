@@ -65,7 +65,7 @@ html, body {
   flex-direction: column;
   justify-content: center;
   width: 30vw;
-  height: 30vh;
+  height: 40vh;
   /* padding: 100px; */
   /* position: relative; */
   /* margin-top: 80px; */
@@ -258,4 +258,62 @@ footer button {
   font-size: 8pt;
   border: none;
   color: white;
+}
+
+@media screen and (max-width: 1536px) {
+  #splash button {
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    margin-bottom: 5px;
+  }
+
+  #splash p {
+    font-size: 16pt;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  #splash {
+    padding: 25px;
+  }
+
+  #splash img {
+    display: inline;
+    position: relative;
+    top: 10px;
+    height: 55px;
+    width: 55px;
+    margin-right: 15px;
+  }
+  
+  #splash h1 {
+    display: inline;
+    font-size: 35pt;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #splash {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  #splash img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  
+  #splash h1 {
+    font-size: 30pt;
+  }
+}
+
+@media screen and (max-width: 828px) {
+  #splash {
+    width: 80vw;
+    height: 65vh;
+  }
 }
