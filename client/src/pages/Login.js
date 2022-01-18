@@ -20,7 +20,7 @@ const Login = (props) => {
   const particlesLoaded = (container) => {
     console.log(container);
   };
-  
+
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -54,7 +54,7 @@ const Login = (props) => {
         <Particles height="100vh" width="100vw" init={particlesInit} loaded={particlesLoaded} options={particlesConfig} />
       </div>
       <div className="form-card">
-        <h3>Log In</h3>
+        <h4>Log In</h4>
         {Object.keys(userManager.user).length ? (
           <p>
             Welcome {userManager.user.user.userName}! You may now head{" "}
