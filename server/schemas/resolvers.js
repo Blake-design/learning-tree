@@ -11,7 +11,14 @@ const resolvers = {
     },
 
     user: async (parent, { userName }) => {
-      return User.findOne({ userName: userName });
+      console.log({ userName: userName });
+      try {
+        const user = await User.findOne({ userName: userName }).lean();
+        console.log(user);
+        return { jsonString: JSON.stringify(user) };
+      } catch (err) {
+        return "user not found";
+      }
     },
 
     me: async (parent, args, context) => {
@@ -104,26 +111,18 @@ const resolvers = {
           description,
         };
 
-        function findParent(spark) {
-          if (spark.title === parentTitle) {
-            spark.push(childSpark);
-          } else
-            spark.map((spark) => {
-              findParent(spark);
-            });
-        }
+        console.log("function hit");
         const user = User.findOne({
           userName: context.user.userName,
         });
-        try {
-          user.sparks.map((spark) => {
-            findParent(spark);
-          });
-          await user.findOneUpdate({ userName: context.user.userName }, user);
-          return user;
-        } catch (error) {
-          console.error("could not find parent");
-        }
+        console.log("user found");
+
+        await user.findOneUpdate(
+          { userName: context.user.userName },
+          { $push: { sparks: spark } }
+        );
+        console.log("");
+        return user;
       }
 
       throw new AuthenticationError("You need to be logged in!");

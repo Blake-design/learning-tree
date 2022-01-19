@@ -14,9 +14,7 @@ export const QUERY_USERS = gql`
 export const QUERY_SINGLE_USER = gql`
   query user($userName: String!) {
     user(userName: $userName) {
-      _id
-
-      userName
+      jsonString
     }
   }
 `;

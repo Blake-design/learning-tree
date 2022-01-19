@@ -33,14 +33,19 @@ const Spark2Spark = ({ user }) => {
   function findParent(spark) {
     if (spark.title === parentTitle) {
       console.log("you found the parent ");
-      spark.push(childSpark);
+      if (spark.sparks) {
+        spark.sparks.push(childSpark);
+      } else {
+        debugger;
+        spark.sparks = [...childSpark];
+      }
       console.log(
         "------------------------------------------------------------------------- "
       );
     } else {
       console.log(+1);
-      spark.sparks.map((s) => {
-        findParent(s);
+      spark.sparks.map((spark) => {
+        findParent(spark);
       });
     }
   }
