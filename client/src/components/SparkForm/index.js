@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_SPARK } from "../../utils/mutations";
 import { useUser } from "../../utils/UserContext";
-import "../../App.css"
+import "../../App.css";
 
-const SparkForm = ({ userId }) => {
+const SparkForm = ({ user }) => {
   const [formState, setFormState] = useState({
     title: "",
     description: "",
@@ -22,6 +22,7 @@ const SparkForm = ({ userId }) => {
       [name]: value,
     });
   };
+  console.log(user.sparks);
 
   // submit form
   const handleFormSubmit = async (event) => {

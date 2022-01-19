@@ -14,12 +14,8 @@ import particlesConfig from "../config/configParticles.js";
 import Auth from "../utils/auth";
 
 const Login = (props) => {
-  const particlesInit = (main) => {
-    console.log(main);
-  };
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  const particlesInit = (main) => {};
+  const particlesLoaded = (container) => {};
 
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
@@ -39,7 +35,7 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    await userManager.handleSigin(formState);
+    await userManager.handleSignIn(formState);
 
     // clear form values
     setFormState({
@@ -50,8 +46,14 @@ const Login = (props) => {
   console.log("this is the user state ", userManager.user.user);
   return (
     <div className="form-container">
-      <div className="tsparticles" style={{ position: 'absolute'}}>
-        <Particles height="100vh" width="100vw" init={particlesInit} loaded={particlesLoaded} options={particlesConfig} />
+      <div className="tsparticles" style={{ position: "absolute" }}>
+        <Particles
+          height="100vh"
+          width="100vw"
+          init={particlesInit}
+          loaded={particlesLoaded}
+          options={particlesConfig}
+        />
       </div>
       <div className="form-card">
         <h4>Log In</h4>
@@ -89,9 +91,7 @@ const Login = (props) => {
         )}
 
         {error && (
-          <div className="my-3 p-3 bg-danger text-white">
-            {error.message}
-          </div>
+          <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
         )}
       </div>
     </div>

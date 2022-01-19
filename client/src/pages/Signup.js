@@ -11,12 +11,8 @@ import particlesConfig from "../config/configParticles.js";
 import Auth from "../utils/auth";
 
 const Signup = () => {
-  const particlesInit = (main) => {
-    console.log(main);
-  };
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  const particlesInit = (main) => {};
+  const particlesLoaded = (container) => {};
 
   const [formState, setFormState] = useState({
     firstName: "",
@@ -63,73 +59,77 @@ const Signup = () => {
 
   return (
     <div className="form-container">
-      <div className="tsparticles" style={{ position: 'absolute'}}>
-        <Particles height="100vh" width="100vw" init={particlesInit} loaded={particlesLoaded} options={particlesConfig} />
+      <div className="tsparticles" style={{ position: "absolute" }}>
+        <Particles
+          height="100vh"
+          width="100vw"
+          init={particlesInit}
+          loaded={particlesLoaded}
+          options={particlesConfig}
+        />
       </div>
       <div className="form-card">
         <h4>Sign Up</h4>
-          {data ? (
-            <p>
-              Welcome {formState.userName} please login{" "}
-              <Navigate to="/login"></Navigate>
-            </p>
-          ) : (
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className="form-input"
-                placeholder="FIRST NAME"
-                name="firstName"
-                type="text"
-                value={formState.firstName}
-                onChange={handleChange}
-              />
-              <input
-                className="form-input"
-                placeholder="LAST NAME"
-                name="lastName"
-                type="text"
-                value={formState.lastName}
-                onChange={handleChange}
-              />
-              <input
-                className="form-input"
-                placeholder="NEW USERNAME"
-                name="userName"
-                type="text"
-                value={formState.userName}
-                onChange={handleChange}
-              />
-              <input
-                className="form-input"
-                placeholder="NEW EMAIL"
-                name="email"
-                type="email"
-                value={formState.email}
-                onChange={handleChange}
-              />
-              <input
-                className="form-input"
-                placeholder="NEW PASSWORD"
-                name="password"
-                type="password"
-                value={formState.password}
-                onChange={handleChange}
-              />
-              <button
-                className="btn btn-block btn-info"
-                style={{ cursor: "pointer" }}
-                type="submit"
-              >
-                SUBMIT
-              </button>
-            </form>
-          )}
+        {data ? (
+          <p>
+            Welcome {formState.userName} please login{" "}
+            <Navigate to="/login"></Navigate>
+          </p>
+        ) : (
+          <form onSubmit={handleFormSubmit}>
+            <input
+              className="form-input"
+              placeholder="FIRST NAME"
+              name="firstName"
+              type="text"
+              value={formState.firstName}
+              onChange={handleChange}
+            />
+            <input
+              className="form-input"
+              placeholder="LAST NAME"
+              name="lastName"
+              type="text"
+              value={formState.lastName}
+              onChange={handleChange}
+            />
+            <input
+              className="form-input"
+              placeholder="NEW USERNAME"
+              name="userName"
+              type="text"
+              value={formState.userName}
+              onChange={handleChange}
+            />
+            <input
+              className="form-input"
+              placeholder="NEW EMAIL"
+              name="email"
+              type="email"
+              value={formState.email}
+              onChange={handleChange}
+            />
+            <input
+              className="form-input"
+              placeholder="NEW PASSWORD"
+              name="password"
+              type="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+            <button
+              className="btn btn-block btn-info"
+              style={{ cursor: "pointer" }}
+              type="submit"
+            >
+              SUBMIT
+            </button>
+          </form>
+        )}
 
-          {error && (
-            <div className="my-3 p-3 bg-danger text-white">
-              {error.message}
-            </div>
-          )}
+        {error && (
+          <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
+        )}
       </div>
     </div>
   );

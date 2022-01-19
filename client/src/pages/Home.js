@@ -7,7 +7,6 @@ import Particles from "react-tsparticles";
 import particlesConfig from "../config/configParticles.js";
 import synapseLogo from "../assets/synapselogo-01.png";
 
-
 import FriendsList from "../components/FriendsList";
 import Header from "../components/Header";
 
@@ -16,26 +15,27 @@ import { QUERY_USERS } from "../utils/queries";
 const Home = () => {
   const { loading, data } = useQuery(QUERY_USERS);
   const users = data?.users || [];
-  
+
   const navigate = useNavigate();
 
-  const particlesInit = (main) => {
-    console.log(main);
-  };
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  const particlesInit = (main) => {};
+  const particlesLoaded = (container) => {};
 
   return (
     // <div className="particles-container vert-center" style={{ position: 'relative', overflow: "hidden" }}>
     <div className="particles-container vert-center">
-
-      <div className="tsparticles" style={{ position: 'absolute'}}>
-        <Particles height="100vh" width="100vw" init={particlesInit} loaded={particlesLoaded} options={particlesConfig} />
+      <div className="tsparticles" style={{ position: "absolute" }}>
+        <Particles
+          height="100vh"
+          width="100vw"
+          init={particlesInit}
+          loaded={particlesLoaded}
+          options={particlesConfig}
+        />
       </div>
       <div id="splash">
         <div id="splashlogo">
-          <img src={synapseLogo} alt="Synapse logo"/>
+          <img src={synapseLogo} alt="Synapse logo" />
           <h1>Synapse</h1>
         </div>
         <hr />
@@ -46,7 +46,6 @@ const Home = () => {
           <button onClick={() => navigate("/signup")}>SIGN UP</button>
         </div>
       </div>
-
     </div>
   );
 };
