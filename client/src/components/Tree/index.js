@@ -1,5 +1,6 @@
 import React from "react";
 import Tree from "react-d3-tree";
+import "../../App.css";
 
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -23,11 +24,12 @@ const OrgChartTree = ({ user }) => {
   }
   // console.log(convertedD3Obj);
   return (
-    <div id="treeWrapper" style={{ width: "50em", height: "20em" }}>
+    // <div id="treeWrapper" style={{ width: "50em", height: "20em" }}>
+    <div id="treeWrapper">
       {user.sparks.length ? (
         <Tree data={convertedD3Obj} />
       ) : (
-        <div> you currently have no data</div>
+        <div><h4 id="nodata">You currently have no data.</h4></div>
       )}
     </div>
   );

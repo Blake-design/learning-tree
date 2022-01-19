@@ -47,15 +47,15 @@ const User = () => {
   return (
     <div>
       <Header />
-      {userParam ? <h1>{user.userName}'s Tree</h1> : <h1>My Tree</h1>}
-      {user != undefined ? (
+      {userParam ? <h1 id="tree-header">{user.userName}'s Tree</h1> : <h1 id="tree-header">My Tree</h1>}
+      {user !== undefined ? (
         <div id="user-tree">
           <OrgChartTree user={user} />
 
-          <FriendsList user={user} />
+          {/* <FriendsList user={user} /> */}
         </div>
       ) : (
-        <div>building graph...</div>
+        <div>Building your tree...</div>
       )}
     </div>
   );

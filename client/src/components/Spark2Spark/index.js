@@ -87,8 +87,11 @@ const Spark2Spark = ({ user }) => {
   };
 
   return (
-    <div className="form-card">
-      <h4 className="create-header">Add on to your sparks.</h4>
+    <div className="form-card" id="spark2spark">
+      <h4>
+        {/* Great job {userManager.user.userName}! please enter sparks here. */}
+        Add on to your sparks.
+      </h4>
       <form onSubmit={handleFormSubmit}>
         <input
           className="form-input"
