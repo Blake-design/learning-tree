@@ -1,4 +1,4 @@
-import Reac, { useState, useEffect } from "react";
+import React from "react";
 
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -8,7 +8,7 @@ import OrgChartTree from "../components/Tree";
 import Header from "../components/Header";
 
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
-import { useUser } from "../utils/UserContext";
+
 import Auth from "../utils/auth";
 
 const User = () => {
@@ -20,17 +20,15 @@ const User = () => {
       variables: { userName: userParam },
     }
   );
-  const userManager = useUser();
 
   let user;
-  console.log(data);
+  console.log("this is the data returned by query " + data);
 
   // console.log(user);
   if (data) {
     if (data.me) {
       user = JSON.parse(data.me.jsonString);
     } else user = JSON.parse(data.user.jsonString);
-    console.log(user);
   }
 
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours

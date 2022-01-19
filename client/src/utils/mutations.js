@@ -59,8 +59,10 @@ export const ADD_SPARK = gql`
   }
 `;
 export const ADD_SPARK_2_SPARK = gql`
-  mutation addSpark2Spark {
-    jsonString
+  mutation addSpark2Spark($jsonString: String) {
+    addSpark2Spark(jsonString: $jsonString) {
+      _id
+    }
   }
 `;
 export const REMOVE_SPARK = gql`
