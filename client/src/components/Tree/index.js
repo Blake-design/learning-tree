@@ -29,7 +29,7 @@ const OrgChartTree = ({ user }) => {
       {user.sparks.length ? (
         <Tree data={convertedD3Obj} />
       ) : (
-        <div id="nodata"><h4>You currently have no data.</h4></div>
+        <div><h4 id="nodata">You currently have no data.</h4></div>
       )}
     </div>
   );

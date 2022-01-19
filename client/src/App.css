@@ -113,6 +113,16 @@ button {
   background-color: white;
 }
 
+#sparkform, #spark2spark {
+  width: 50vw;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+#sparkform{
+  margin-top: 35px;
+}
+
 .form-card h3 {
   font-weight: 400;
   font-size: 40pt;

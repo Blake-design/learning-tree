@@ -1,4 +1,4 @@
-import Reac, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -50,7 +50,7 @@ const User = () => {
     <div>
       <Header />
       {userParam ? <h1 id="tree-header">{user.userName}'s Tree</h1> : <h1 id="tree-header">My Tree</h1>}
-      {user != undefined ? (
+      {user !== undefined ? (
         <div id="user-tree">
           <OrgChartTree user={user} />
 
