@@ -11,7 +11,11 @@ const resolvers = {
     },
 
     user: async (parent, { userName }) => {
-      return User.findOne({ userName: userName });
+      console.log({ userName: userName });
+
+      const user = await User.findOne({ userName: userName }).lean();
+      console.log(user);
+      return { jsonString: JSON.stringify(user) };
     },
 
     me: async (parent, args, context) => {
@@ -93,37 +97,15 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    addSpark2Spark: async (
-      parent,
-      { parentTitle, title, description },
-      context
-    ) => {
+    addSpark2Spark: async (parent, { user }, context) => {
       if (context.user) {
-        var childSpark = {
-          title,
-          description,
-        };
-
-        function findParent(spark) {
-          if (spark.title === parentTitle) {
-            spark.push(childSpark);
-          } else
-            spark.map((spark) => {
-              findParent(spark);
-            });
-        }
-        const user = User.findOne({
-          userName: context.user.userName,
-        });
-        try {
-          user.sparks.map((spark) => {
-            findParent(spark);
-          });
-          await user.findOneUpdate({ userName: context.user.userName }, user);
-          return user;
-        } catch (error) {
-          console.error("could not find parent");
-        }
+        console.log("spark 2 spark was hit");
+        await User.findOneAndUpdate(
+          { userName: context.user.userName },
+          { user }
+        );
+        console.log(" thi was a success");
+        return user;
       }
 
       throw new AuthenticationError("You need to be logged in!");

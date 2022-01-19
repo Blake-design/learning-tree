@@ -1,5 +1,4 @@
 import { gql } from "@apollo/client";
-import { SPARK_FIELDS, SPARK_RECURSIVE } from "./fragments";
 
 export const QUERY_USERS = gql`
   query allUsers {
@@ -15,9 +14,7 @@ export const QUERY_USERS = gql`
 export const QUERY_SINGLE_USER = gql`
   query user($userName: String!) {
     user(userName: $userName) {
-      _id
-
-      userName
+      jsonString
     }
   }
 `;

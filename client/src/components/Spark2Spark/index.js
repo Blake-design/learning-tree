@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_SPARK_2_SPARK } from "../../utils/mutations";
 import { useUser } from "../../utils/UserContext";
 
-const Spark2Spark = ({ userId }) => {
+const Spark2Spark = ({ user }) => {
   const [formState, setFormState] = useState({
     parentTitle: "",
     title: "",
@@ -28,22 +28,54 @@ const Spark2Spark = ({ userId }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // const spark = { ...formState };
-    // user.sparks.push(spark);
-    // console.log("Check to see if data changed " + user);
+    const parentTitle = formState.parentTitle;
 
-    // JSON.stringify(user);
+    function findParent(spark) {
+      if (spark.sparks || spark.title === parentTitle) {
+        console.log("you entered foster care ");
+
+        if (spark.sparks && spark.title === parentTitle) {
+          console.log("you found a home with kids");
+          spark.sparks.push({
+            title: formState.title,
+            description: formState.description,
+          });
+          return (data = JSON.stringify(user));
+        } else if (spark.title === parentTitle) {
+          console.log("you found a home with out kids ");
+          spark.sparks = [
+            { title: formState.title, description: formState.description },
+          ];
+          return (data = JSON.stringify(user));
+        } else if (spark.sparks) {
+          console.log("next search hit");
+          spark.sparks.map((spark) => {
+            findParent(spark);
+          });
+        }
+
+        return;
+      }
+    }
+    let data;
+    try {
+      console.log("start search");
+      user.sparks.map((spark) => {
+        console.log("hit first map");
+        findParent(spark);
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
 
     try {
-      const { data } = await addSpark2Spark({
-        variables: { ...formState },
+      await addSpark2Spark({
+        variables: { jsonString: data },
       });
-
-      // Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
-      console.log({ ...formState });
     }
+
     setFormState({
       parentTitle: "",
       title: "",
