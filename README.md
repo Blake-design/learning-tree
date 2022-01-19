@@ -41,7 +41,7 @@ Your journey begins with a singular 'Spark" so enter a Title and brief descripti
 
 if you return to your user page you will see a tree truck of data displayed.
 
------ new user tree ---
+![user-first-entry](https://user-images.githubusercontent.com/64717707/150197276-8715bb20-87b9-4dfa-b5db-8b1a023fa8da.png)
 
 To keep building out your graph return to the create page and enter the Title of the node you woud like to branch off of.
 
