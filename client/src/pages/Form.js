@@ -27,12 +27,13 @@ const Form = () => {
   return (
     <div>
       <Header />
-      <div className="form-container">
+      {/* <div className="form-container"> */}
+      <div>
         <div>
-          <SparkForm user={user} />
+          <SparkForm user={user}/>
         </div>
         <div>
-          <Spark2Spark user={user} />
+          <Spark2Spark user={user}/>
         </div>
       </div>
     </div>
