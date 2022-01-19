@@ -45,7 +45,7 @@ const SparkForm = ({ user }) => {
 
   return (
     <div className="form-card">
-      <h4 className="card-header">
+      <h4 className="create-header">
         {/* Great job {userManager.user.userName}! please enter sparks here. */}
         Create a new spark.
       </h4>
