@@ -15,6 +15,8 @@ Synapse is a progressive web application that maps your exploration of learning.
 
 Welcome to your start of your journey!
 
+![splash](https://user-images.githubusercontent.com/64717707/150196525-7490ea58-b38e-4d4a-9eff-366791700ffd.png)
+
 The first time a User logs in they will need to set up an account.
 
 ---- insert photo of sign up -----
