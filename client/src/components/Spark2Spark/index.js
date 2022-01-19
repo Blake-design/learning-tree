@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_SPARK_2_SPARK } from "../../utils/mutations";
 import { useUser } from "../../utils/UserContext";
 
-const Spark2Spark = ({ userId }) => {
+const Spark2Spark = ({ user }) => {
   const [formState, setFormState] = useState({
     parentTitle: "",
     title: "",
@@ -23,27 +23,62 @@ const Spark2Spark = ({ userId }) => {
       [name]: value,
     });
   };
+  console.log(user);
+  const parentTitle = "Autoplay";
+  const childSpark = {
+    title: "this operation was a success",
+    description: "yayyyyy",
+  };
 
+  function findParent(spark) {
+    if (spark.title === parentTitle) {
+      console.log("you found the parent ");
+      spark.push(childSpark);
+      console.log(
+        "------------------------------------------------------------------------- "
+      );
+    } else {
+      console.log(+1);
+      spark.sparks.map((s) => {
+        findParent(s);
+      });
+    }
+  }
+
+  try {
+    user.sparks.map((spark) => {
+      findParent(spark);
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
+  console.log(user);
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // const spark = { ...formState };
-    // user.sparks.push(spark);
-    // console.log("Check to see if data changed " + user);
+    const spark = { ...formState };
+    user.sparks.push(spark);
 
-    // JSON.stringify(user);
+    JSON.stringify(user);
 
-    try {
-      const { data } = await addSpark2Spark({
-        variables: { ...formState },
-      });
+    // try {
+    //   user.sparks.map((spark) => {
+    //     findParent(spark);
+    //   });
+    // } catch (error) {
+    //   console.error("could not find parent");
+    // }
 
-      // Auth.login(data.addUser.token);
-    } catch (e) {
-      console.error(e);
-      console.log({ ...formState });
-    }
+    // try {
+    //   const { data } = await addSpark2Spark({
+    //     variables: { ...formState },
+    //   });
+
+    // } catch (e) {
+    //   console.error(e);
+    //   console.log({ ...formState });
+    // }
     setFormState({
       parentTitle: "",
       title: "",

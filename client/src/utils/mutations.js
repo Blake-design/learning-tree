@@ -59,19 +59,9 @@ export const ADD_SPARK = gql`
   }
 `;
 export const ADD_SPARK_2_SPARK = gql`
-  mutation addSpark2Spark(
-    $parentTitle: String!
-    $title: String!
-    $description: String!
-  ) {
-    addSpark2Spark(
-      parentTitle: $parentTitle
-      title: $title
-      description: $description
-    ) {
-      sparks {
-        _id
-      }
+  mutation addSpark2Spark {
+    user {
+      username
     }
   }
 `;
@@ -79,7 +69,7 @@ export const REMOVE_SPARK = gql`
   mutation removeSpark($sparkId: String!) {
     removeSpark(sparkId: $sparkId) {
       sparks {
-        _id
+        title
       }
     }
   }
