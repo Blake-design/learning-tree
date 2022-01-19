@@ -19,19 +19,23 @@ Welcome to your start of your journey!
 
 The first time a User logs in they will need to set up an account.
 
----- insert photo of sign up -----
+
+![signUp](https://user-images.githubusercontent.com/64717707/150196757-1b3218d3-6d94-4c46-8973-e1cd822ede30.png)
+
 
 Now you can log in to start your journey.
 
 Once you found your user page you will need to begin entering data.
 
-**\_\_** insert photo of new user -------
+![user-first](https://user-images.githubusercontent.com/64717707/150196776-2fabc031-92ec-4794-b808-a48d59eb2fe7.png)
+
 
 On the top right is a menu that will give you opportunity to add information to your data tree. Click "Create".
 
 You will new see a form page prompting you to enter data.
 
-\_\_----isert photo of form page -------
+![form](https://user-images.githubusercontent.com/64717707/150196784-28931b40-ea04-46c3-b49f-21d3895763e9.png)
+
 
 Your journey begins with a singular 'Spark" so enter a Title and brief description of the area of study.
 
@@ -43,7 +47,7 @@ To keep building out your graph return to the create page and enter the Title of
 
 eventually you will develop and interactive tree like so...
 
------ developer tree -----
+![developer](https://user-images.githubusercontent.com/64717707/150196789-461d3365-aa41-46c9-ab59-81aebd4d95b2.png)
 
 ## How was it Built?
 
