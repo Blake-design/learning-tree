@@ -11,20 +11,17 @@ const resolvers = {
     },
 
     user: async (parent, { userName }) => {
-      console.log({ userName: userName });
-
       const user = await User.findOne({ userName: userName }).lean();
-      console.log(user);
+
       return { jsonString: JSON.stringify(user) };
     },
 
     me: async (parent, args, context) => {
-      console.log("this function was hit");
       if (context.user) {
         const user = await User.findOne({
           userName: context.user.userName,
         }).lean();
-        console.log(user);
+
         return { jsonString: JSON.stringify(user) };
       }
       throw new AuthenticationError("Please log in to view your profile.");
@@ -97,14 +94,17 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    addSpark2Spark: async (parent, { user }, context) => {
+    addSpark2Spark: async (parent, data, context) => {
+      console.log("this is the data recieved by the server " + data);
+
       if (context.user) {
         console.log("spark 2 spark was hit");
-        await User.findOneAndUpdate(
+
+        const user = await User.findOneAndUpdate(
           { userName: context.user.userName },
-          { user }
+          data
         );
-        console.log(" thi was a success");
+        console.log("this is the new user to be returned " + user);
         return user;
       }
 
