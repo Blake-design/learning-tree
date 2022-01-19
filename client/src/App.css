@@ -188,18 +188,36 @@ header h1 {
   font-size: 12pt;
 } */
 
-#user-tree {
-  padding: 20px;
-  padding-left: 200px;
-  padding-right: 200px;
-}
-
-#user-tree h1 {
-  margin-top: 20px;
-  font-size: 50pt;
+#tree-header {
+  margin-top: 35px;
+  margin-bottom: 20px;
+  font-size: 35pt;
   font-weight: 100;
   color: #4174ff;
 }
+
+#user-tree {
+  height: 50vh;
+  padding: 20px;
+  padding-left: 200px;
+  padding-right: 200px;
+  border-top: 1px solid #4174ff;
+  border-bottom: 1px solid #4174ff;
+}
+
+#nodata {
+  margin: 0 auto;
+  font-weight: 100;
+  font-size: 16pt;
+  color: #923fc0;
+  margin-bottom: 30px;
+}
+
+/* #treeWrapper {
+  border-top: 1px solid #4174ff;
+  border-bottom: 1px solid #4174ff;
+  width: 100vw;
+} */
 
 footer {
   display: flex;
@@ -288,7 +306,15 @@ footer button {
 
   .form-container, .form-card {
     width: 60vw;
+  }
 
+  #tree-header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20pt;
+    font-weight: 400;
+    /* margin: 0 auto; */
+    text-align: center;
   }
 }
 
