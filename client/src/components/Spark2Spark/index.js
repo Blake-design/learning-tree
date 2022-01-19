@@ -12,7 +12,7 @@ const Spark2Spark = ({ user }) => {
   });
   const userManager = useUser();
 
-  const [addSpark2Spark, { error, data }] = useMutation(ADD_SPARK_2_SPARK);
+  const [addSpark2Spark, { error, res }] = useMutation(ADD_SPARK_2_SPARK);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -40,13 +40,15 @@ const Spark2Spark = ({ user }) => {
             title: formState.title,
             description: formState.description,
           });
-          return (data = JSON.stringify(user));
+          console.log("we added your data");
+          return (data = user);
         } else if (spark.title === parentTitle) {
           console.log("you found a home with out kids ");
           spark.sparks = [
             { title: formState.title, description: formState.description },
           ];
-          return (data = JSON.stringify(user));
+          console.log("we added a array with your data");
+          return (data = user);
         } else if (spark.sparks) {
           console.log("next search hit");
           spark.sparks.map((spark) => {
@@ -59,7 +61,7 @@ const Spark2Spark = ({ user }) => {
     }
     let data;
     try {
-      console.log("start search");
+      await console.log("start search");
       user.sparks.map((spark) => {
         console.log("hit first map");
         findParent(spark);
@@ -69,8 +71,9 @@ const Spark2Spark = ({ user }) => {
     }
 
     try {
+      console.log("this is data sent back to the server " + data);
       await addSpark2Spark({
-        variables: { jsonString: data },
+        variables: data,
       });
     } catch (e) {
       console.error(e);
