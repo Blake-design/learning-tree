@@ -8,14 +8,14 @@ const Footer = () => {
   return (
     <footer>
       {/* <div className="container text-center mb-5"> */}
-        {location.pathname !== "/" && (
+        {/* {location.pathname !== "/" && (
           <button
             className="btn btn-dark mb-3"
             onClick={() => navigate(-1)}
           >
             &larr; BACK
           </button>
-        )}
+        )} */}
         <p>&copy; {new Date().getFullYear()} SYNAPSE</p>
         <p>BROUGHT TO YOU FROM SAN ANTONIO, TX</p>
     </footer>

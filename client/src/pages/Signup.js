@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
@@ -11,6 +11,9 @@ import particlesConfig from "../config/configParticles.js";
 import Auth from "../utils/auth";
 
 const Signup = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const particlesInit = (main) => {};
   const particlesLoaded = (container) => {};
 
@@ -124,6 +127,14 @@ const Signup = () => {
             >
               SUBMIT
             </button>
+            {location.pathname !== "/" && (
+              <button
+                className="form-back-btn"
+                onClick={() => navigate(-1)}
+              >
+                &larr; BACK
+              </button>
+            )}
           </form>
         )}
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../App.css";
+// import "../../App.css";
 import Auth from "../../utils/auth";
 // import "./header.css";
 import synapseLogo from "../../assets/synapselogo-01.png";
@@ -41,7 +41,7 @@ const Header = () => {
 
   return (    
     <header>
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav className="navbar is-expanded" role="navigation" aria-label="main navigation">
 
         <div className="navbar-brand">
           <a className="navbar-item" onClick={() => navigate("/me")}>
