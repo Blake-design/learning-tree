@@ -18,6 +18,7 @@ const User = () => {
     userParam ? QUERY_SINGLE_USER : QUERY_ME,
     {
       variables: { userName: userParam },
+      fetchPolicy: "network-only",
     }
   );
 
@@ -47,7 +48,11 @@ const User = () => {
   return (
     <div>
       <Header />
-      {userParam ? <h1 id="tree-header">{user.userName}'s Tree</h1> : <h1 id="tree-header">My Tree</h1>}
+      {userParam ? (
+        <h1 id="tree-header">{user.userName}'s Tree</h1>
+      ) : (
+        <h1 id="tree-header">My Tree</h1>
+      )}
       {user !== undefined ? (
         <div id="user-tree">
           <OrgChartTree user={user} />
