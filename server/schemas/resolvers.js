@@ -12,13 +12,10 @@ const resolvers = {
 
     user: async (parent, { userName }) => {
       console.log({ userName: userName });
-      try {
-        const user = await User.findOne({ userName: userName }).lean();
-        console.log(user);
-        return { jsonString: JSON.stringify(user) };
-      } catch (err) {
-        return "user not found";
-      }
+
+      const user = await User.findOne({ userName: userName }).lean();
+      console.log(user);
+      return { jsonString: JSON.stringify(user) };
     },
 
     me: async (parent, args, context) => {

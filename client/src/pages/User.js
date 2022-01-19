@@ -23,12 +23,15 @@ const User = () => {
   const userManager = useUser();
 
   let user;
+  console.log(data);
 
-  console.log(userManager.user);
   // console.log(user);
   if (data) {
-    user = JSON.parse(data.me.jsonString);
+    if (data.me) {
+      user = JSON.parse(data.me.jsonString);
+    } else user = JSON.parse(data.user.jsonString);
   }
+
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data.userName === userParam) {
     return <Navigate to="/me" />;
@@ -37,6 +40,7 @@ const User = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
   if (error) {
     return <div> AHHHHHHHHHHHHHH.......</div>;
   }
