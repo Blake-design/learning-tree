@@ -30,6 +30,7 @@ const User = () => {
     if (data.me) {
       user = JSON.parse(data.me.jsonString);
     } else user = JSON.parse(data.user.jsonString);
+    console.log(user);
   }
 
   // Use React Router's `<Navigate />` component to Navigate to personal user page if username is yours

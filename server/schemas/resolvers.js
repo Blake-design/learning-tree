@@ -97,28 +97,14 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    addSpark2Spark: async (
-      parent,
-      { parentTitle, title, description },
-      context
-    ) => {
+    addSpark2Spark: async (parent, { user }, context) => {
       if (context.user) {
-        var childSpark = {
-          title,
-          description,
-        };
-
-        console.log("function hit");
-        const user = User.findOne({
-          userName: context.user.userName,
-        });
-        console.log("user found");
-
-        await user.findOneUpdate(
+        console.log("spark 2 spark was hit");
+        await User.findOneAndUpdate(
           { userName: context.user.userName },
-          { $push: { sparks: spark } }
+          { user }
         );
-        console.log("");
+        console.log(" thi was a success");
         return user;
       }
 

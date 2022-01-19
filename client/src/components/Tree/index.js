@@ -5,44 +5,6 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_SPARKS, QUERY_SINGLE_USER } from "../../utils/queries";
 
-// This is a simplified example of an org chart with a depth of 2.
-// Note how deeper levels are defined recursively via the `children` property.
-const orgChart = {
-  name: "userName",
-  children: [
-    {
-      name: "focus",
-      attributes: {
-        title: "focus title",
-      },
-      children: [
-        {
-          name: "spark",
-          attributes: {
-            title: "",
-          },
-          children: [
-            {
-              name: "Worker",
-            },
-          ],
-        },
-        {
-          name: "Foreman",
-          attributes: {
-            department: "Assembly",
-          },
-          children: [
-            {
-              name: "Worker",
-            },
-          ],
-        },
-      ],
-    },
-  ],
-};
-
 const OrgChartTree = ({ user }) => {
   const convertedD3Obj = {
     name: user.sparks.title,

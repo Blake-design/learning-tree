@@ -60,9 +60,7 @@ export const ADD_SPARK = gql`
 `;
 export const ADD_SPARK_2_SPARK = gql`
   mutation addSpark2Spark {
-    user {
-      username
-    }
+    jsonString
   }
 `;
 export const REMOVE_SPARK = gql`

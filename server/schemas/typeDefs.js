@@ -45,11 +45,8 @@ const typeDefs = gql`
 
     addSpark(title: String!, description: String!): User
 
-    addSpark2Spark(
-      parentTitle: String!
-      title: String!
-      description: String!
-    ): User
+    addSpark2Spark(jsonString: String): User
+
     addFriend(userName: String!): User
 
     login(email: String!, password: String!): Auth

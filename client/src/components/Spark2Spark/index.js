@@ -23,67 +23,59 @@ const Spark2Spark = ({ user }) => {
       [name]: value,
     });
   };
-  console.log(user);
-  const parentTitle = "Autoplay";
-  const childSpark = {
-    title: "this operation was a success",
-    description: "yayyyyy",
-  };
 
-  function findParent(spark) {
-    if (spark.title === parentTitle) {
-      console.log("you found the parent ");
-      if (spark.sparks) {
-        spark.sparks.push(childSpark);
-      } else {
-        debugger;
-        spark.sparks = [...childSpark];
-      }
-      console.log(
-        "------------------------------------------------------------------------- "
-      );
-    } else {
-      console.log(+1);
-      spark.sparks.map((spark) => {
-        findParent(spark);
-      });
-    }
-  }
-
-  try {
-    user.sparks.map((spark) => {
-      findParent(spark);
-    });
-  } catch (error) {
-    console.error(error.message);
-  }
-  console.log(user);
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const spark = { ...formState };
-    user.sparks.push(spark);
+    const parentTitle = formState.parentTitle;
 
-    JSON.stringify(user);
+    function findParent(spark) {
+      if (spark.sparks || spark.title === parentTitle) {
+        console.log("you entered foster care ");
 
-    // try {
-    //   user.sparks.map((spark) => {
-    //     findParent(spark);
-    //   });
-    // } catch (error) {
-    //   console.error("could not find parent");
-    // }
+        if (spark.sparks && spark.title === parentTitle) {
+          console.log("you found a home with kids");
+          spark.sparks.push({
+            title: formState.title,
+            description: formState.description,
+          });
+          return (data = JSON.stringify(user));
+        } else if (spark.title === parentTitle) {
+          console.log("you found a home with out kids ");
+          spark.sparks = [
+            { title: formState.title, description: formState.description },
+          ];
+          return (data = JSON.stringify(user));
+        } else if (spark.sparks) {
+          console.log("next search hit");
+          spark.sparks.map((spark) => {
+            findParent(spark);
+          });
+        }
 
-    // try {
-    //   const { data } = await addSpark2Spark({
-    //     variables: { ...formState },
-    //   });
+        return;
+      }
+    }
+    let data;
+    try {
+      console.log("start search");
+      user.sparks.map((spark) => {
+        console.log("hit first map");
+        findParent(spark);
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
 
-    // } catch (e) {
-    //   console.error(e);
-    //   console.log({ ...formState });
-    // }
+    try {
+      await addSpark2Spark({
+        variables: { jsonString: data },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+
     setFormState({
       parentTitle: "",
       title: "",
