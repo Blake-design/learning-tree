@@ -94,15 +94,16 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    addSpark2Spark: async (parent, data, context) => {
-      console.log("this is the data recieved by the server " + data);
-
+    addSpark2Spark: async (parent, { jsonString }, context) => {
+      console.log("this is the data recieved by the server " + jsonString);
+      console.log(JSON.parse(jsonString));
+      data = JSON.parse(jsonString);
       if (context.user) {
         console.log("spark 2 spark was hit");
 
         const user = await User.findOneAndUpdate(
           { userName: context.user.userName },
-          data
+          { ...data }
         );
         console.log("this is the new user to be returned " + user);
         return user;

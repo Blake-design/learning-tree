@@ -71,9 +71,11 @@ const Spark2Spark = ({ user }) => {
     }
 
     try {
-      console.log("this is data sent back to the server " + data);
+      console.log(
+        "this is data sent back to the server " + JSON.stringify(data)
+      );
       await addSpark2Spark({
-        variables: data,
+        variables: { jsonString: JSON.stringify(data) },
       });
     } catch (e) {
       console.error(e);
