@@ -361,6 +361,18 @@ footer button {
     text-align: center;
   }
 }
+.node__root > circle {
+  fill: whitesmoke;
+}
+
+.node__branch > circle {
+  fill: #7673c0;
+}
+
+.node__leaf > circle {
+  fill: #4174ff;
+  /* Let's also make the radius of leaf nodes larger */
+}
 
 /* .App {
   text-align: center;
