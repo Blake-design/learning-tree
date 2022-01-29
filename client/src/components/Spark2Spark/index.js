@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_SPARK_2_SPARK } from "../../utils/mutations";
 import { useUser } from "../../utils/UserContext";
+import SelectorMenu from "../SelectorMenu";
 
 const Spark2Spark = ({ user }) => {
   const [formState, setFormState] = useState({
@@ -12,6 +13,20 @@ const Spark2Spark = ({ user }) => {
   });
   const userManager = useUser();
 
+  var titles = [];
+  function findTitles(spark) {
+    if (spark.sparks) {
+      spark.sparks.map((s) => {
+        titles.push(s.title);
+        findTitles(s);
+      });
+    }
+  }
+
+  user.sparks.map((spark) => {
+    titles.push(spark.title);
+    findTitles(spark);
+  });
   const [addSpark2Spark, { error, res }] = useMutation(ADD_SPARK_2_SPARK);
 
   // update state based on form input changes
@@ -27,7 +42,7 @@ const Spark2Spark = ({ user }) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(formState.parentTitle);
     const parentTitle = formState.parentTitle;
 
     function findParent(spark) {
@@ -90,19 +105,17 @@ const Spark2Spark = ({ user }) => {
 
   return (
     <div className="form-card" id="spark2spark">
-      <h4>
-        {/* Great job {userManager.user.userName}! please enter sparks here. */}
-        Add on to your sparks.
-      </h4>
+      <h4>Add on to your sparks.</h4>
+
       <form onSubmit={handleFormSubmit}>
-        <input
-          className="form-input"
-          placeholder="Please enter parent"
-          name="parentTitle"
-          type="text"
-          value={formState.parentTitle}
-          onChange={handleChange}
-        />
+        <label htmlFor="Parent">Parent Node: </label>
+        <select name="parentTitle" onChange={handleChange}>
+          {titles.map((title) => {
+            {
+              return <option value={title}>{title}</option>;
+            }
+          })}
+        </select>
         <input
           className="form-input"
           placeholder="Please enter a title"
