@@ -1,28 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-
 import "../App.css";
 import Particles from "react-tsparticles";
 import particlesConfig from "../config/configParticles.js";
 import synapseLogo from "../assets/synapselogo-01.png";
 
-import FriendsList from "../components/FriendsList";
-import Header from "../components/Header";
-
-import { QUERY_USERS } from "../utils/queries";
-
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_USERS);
-  const users = data?.users || [];
-
   const navigate = useNavigate();
 
   const particlesInit = (main) => {};
   const particlesLoaded = (container) => {};
 
   return (
-    // <div className="particles-container vert-center" style={{ position: 'relative', overflow: "hidden" }}>
     <div className="particles-container vert-center">
       <div className="tsparticles" style={{ position: "absolute" }}>
         <Particles
@@ -39,7 +28,6 @@ const Home = () => {
           <h1>Synapse</h1>
         </div>
         <hr />
-        {/* <h3>Pathways to Learning</h3> */}
         <p>Every step begins with a spark.</p>
         <div>
           <button onClick={() => navigate("/login")}>LOG IN</button>

@@ -12,20 +12,15 @@ const InfoModel = ({ user }) => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log(user);
-  console.log(data);
-  if (!data) {
-    return <h3>this user currently has no tree</h3>;
-  }
-  console.log();
+
   return (
     <div>
-      {data?.sparks.map((s) => {
+      {user?.sparks.map((s) => {
         return (
           <li key={s._id}>
             {s.title}
             <ol>
-              {data.sparks.map((spark) => {
+              {user.sparks.map((spark) => {
                 return <li key={spark._id}>{spark.title}</li>;
               })}
             </ol>

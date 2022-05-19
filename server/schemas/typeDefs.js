@@ -2,7 +2,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
-    _id: ID
+    _id: ID!
     firstName: String!
     lastName: String!
     userName: String!
@@ -27,11 +27,18 @@ const typeDefs = gql`
     jsonString: String
   }
 
+  type friend {
+    firstName: String!
+    lastName: String!
+    userName: String!
+  }
+
   type Query {
     users: [User]!
     user(userName: String!): JSONobject
     me: JSONobject
     sparks: [Spark]
+    friend(_id: ID!): User
   }
 
   type Mutation {

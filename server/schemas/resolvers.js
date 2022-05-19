@@ -1,5 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { query } = require("express");
+const { ConnectionStates } = require("mongoose");
 const { user } = require("../config/connection");
 const { User } = require("../models");
 const { signToken } = require("../utils/auth");
@@ -11,16 +12,22 @@ const resolvers = {
     },
 
     user: async (parent, { userName }) => {
-      const user = await User.findOne({ userName: userName }).lean();
+      const user = await User.findOne(
+        { userName: userName },
+        { password: 0, _id: 0, email: 0, __v: 0 }
+      ).lean();
 
       return { jsonString: JSON.stringify(user) };
     },
 
     me: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findOne({
-          userName: context.user.userName,
-        }).lean();
+        const user = await User.findOne(
+          {
+            userName: context.user.userName,
+          },
+          { password: 0, _id: 0, email: 0, __v: 0 }
+        ).lean();
 
         return { jsonString: JSON.stringify(user) };
       }
@@ -29,6 +36,12 @@ const resolvers = {
 
     sparks: async (parent, { userName }) => {
       return Spark.find({ userName: userName });
+    },
+
+    friend: async (parent, { _id }, context) => {
+      const friend = await User.findOne({ _id });
+
+      return friend;
     },
   },
 
@@ -136,21 +149,26 @@ const resolvers = {
     },
 
     addFriend: async (parent, { userName }, context) => {
-      console.log("we hit the function");
       if (context.user) {
+        const self = await User.findOne({ userName: context.user.userName });
         const friend = await User.findOne({ userName: userName });
-        console.log("we found the friends account");
+
+        await User.findOneAndUpdate(
+          { userName: userName },
+          { $push: { friends: self } },
+          { new: true }
+        );
         await User.findOneAndUpdate(
           { userName: context.user.userName },
           { $push: { friends: friend } },
           { new: true }
         );
-        console.log("we updated your account ");
 
         return friend;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+
     removeFriend: async (parent, { userName }, context) => {
       if (context.user) {
         const friend = await User.findOne({ userName: userName });

@@ -11,8 +11,6 @@ import "../App.css";
 import Particles from "react-tsparticles";
 import particlesConfig from "../config/configParticles.js";
 
-import Auth from "../utils/auth";
-
 const Login = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,7 +44,7 @@ const Login = (props) => {
       password: "",
     });
   };
-  console.log("this is the user state ", userManager.user.user);
+
   return (
     <div className="form-container">
       <div className="tsparticles" style={{ position: "absolute" }}>
@@ -83,18 +81,11 @@ const Login = (props) => {
               value={formState.password}
               onChange={handleChange}
             />
-            <button
-              // className="btn btn-block btn-info"
-              style={{ cursor: "pointer" }}
-              type="submit"
-            >
+            <button style={{ cursor: "pointer" }} type="submit">
               SUBMIT
             </button>
             {location.pathname !== "/" && (
-              <button
-                className="form-back-btn"
-                onClick={() => navigate(-1)}
-              >
+              <button className="form-back-btn" onClick={() => navigate(-1)}>
                 &larr; BACK
               </button>
             )}

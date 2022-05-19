@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_FRIEND } from "../../utils/mutations";
 
@@ -27,8 +26,6 @@ const FriendsList = ({ user }) => {
       const { data } = await addFriend({
         variables: { ...formState },
       });
-
-      // Auth.login(data.addUser.token);
     } catch (error) {
       console.error(error);
     }
@@ -40,7 +37,10 @@ const FriendsList = ({ user }) => {
   return (
     <div>
       <h3>Friends List</h3>
-      <p> you are currently following {user.friends.length} friends</p>
+      <p>
+        you are currently following {user.friends.length} friend
+        {user.friends.length >= 2 ? "s" : ""}
+      </p>
       <form onSubmit={handleFormSubmit}>
         <input
           className="form-input"

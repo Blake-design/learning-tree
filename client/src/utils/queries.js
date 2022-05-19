@@ -36,3 +36,12 @@ export const QUERY_SPARKS = gql`
     }
   }
 `;
+export const QUERY_FRIEND = gql`
+  query friend($_id: ID!) {
+    friend(_id: $_id) {
+      userName
+      firstName
+      lastName
+    }
+  }
+`;

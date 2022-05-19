@@ -14,7 +14,7 @@ import "./App.css";
 import { ProvideUser } from "./utils/UserContext";
 ///Import components
 
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 
 ///Import pages
 import Home from "./pages/Home";
@@ -22,6 +22,7 @@ import User from "./pages/User";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Form from "./pages/Form";
+import Profile from "./pages/Profile";
 
 //// set graphlQl link
 const httpLink = createHttpLink({
@@ -52,9 +53,7 @@ function App() {
       <ProvideUser>
         <Router>
           <div className="flex-column justify-flex-start min-100-vh">
-            {/* <Header /> */}
             <div className="container">
-              {/* <OrgChartTree /> */}
               <Routes>
                 <Route exact path="/" element={<Home />} />
 
@@ -67,6 +66,8 @@ function App() {
                 <Route exact path="/:userName" element={<User />} />
 
                 <Route exact path="/create" element={<Form />} />
+
+                <Route exact path="/profile" element={<Profile />} />
               </Routes>
             </div>
             <Footer />

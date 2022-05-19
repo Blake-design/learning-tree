@@ -3,9 +3,9 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import FriendsList from "../components/FriendsList";
-import OrgChartTree from "../components/Tree";
-import Header from "../components/Header";
+import FriendsList from "../components/FriendsList/FriendsList";
+import OrgChartTree from "../components/Tree/Tree";
+import Header from "../components/Header/Header";
 
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 
@@ -23,9 +23,7 @@ const User = () => {
   );
 
   let user;
-  console.log("this is the data returned by query " + data);
 
-  // console.log(user);
   if (data) {
     if (data.me) {
       user = JSON.parse(data.me.jsonString);
@@ -42,7 +40,7 @@ const User = () => {
   }
 
   if (error) {
-    return <div> AHHHHHHHHHHHHHH.......</div>;
+    return <div> {error.message} </div>;
   }
 
   return (
@@ -57,7 +55,7 @@ const User = () => {
         <div id="user-tree">
           <OrgChartTree user={user} />
 
-          {/* <FriendsList user={user} /> */}
+          <FriendsList user={user} />
         </div>
       ) : (
         <div>Building your tree...</div>

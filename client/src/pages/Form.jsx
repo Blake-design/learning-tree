@@ -2,11 +2,11 @@ import React from "react";
 
 import { useQuery } from "@apollo/client";
 
-import Header from "../components/Header";
-import SparkForm from "../components/SparkForm";
-import Spark2Spark from "../components/Spark2Spark";
+import Header from "../components/Header/Header";
+import SparkForm from "../components/SparkForm/SparkForm";
+import Spark2Spark from "../components/Spark2Spark/Spark2Spark";
 
-import InfoModel from "../components/InfoModel";
+import InfoModel from "../components/InfoModel/InfoModel";
 import { QUERY_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
@@ -22,18 +22,19 @@ const Form = () => {
 
   if (data) {
     user = JSON.parse(data.me.jsonString);
+    console.log(user);
   }
 
   return (
     <div>
       <Header />
-      {/* <div className="form-container"> */}
       <div>
         <div>
-          <SparkForm user={user}/>
+          <InfoModel user={user} />
+          <SparkForm user={user} />
         </div>
         <div>
-          <Spark2Spark user={user}/>
+          <Spark2Spark user={user} />
         </div>
       </div>
     </div>
